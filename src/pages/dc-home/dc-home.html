@@ -1,0 +1,36 @@
+<ion-header>
+    <dc-header>
+
+    </dc-header>
+</ion-header>
+<ion-content>
+    <div class="dc-content">
+        <div class="slide">
+            <ion-slides>
+                <ion-slide pager="true">
+                    <img src="https://s3-ap-southeast-1.amazonaws.com/mytour-static-file/files/cityme%20625x400.png" alt="slide">
+                </ion-slide>
+                <ion-slide>
+                    <img src="https://cdn02.static-adayroi.com/resize/710_710/100/0/2016/09/20/1474361257955_5545841.jpg" alt="slide">
+                </ion-slide>
+            </ion-slides>
+        </div>
+        <div class="dc-section">
+            <div class="section-header">
+                <span class="title">Món ngon hôm nay</span>
+                <span class="button-right round">Xem tất cả</span>
+            </div>
+            <div class="section-body">
+                <div class="horizontal-scroll">
+                    <div *ngFor="let food of dailyFoods" class="item">
+                        <div class="item-image">
+                            <img src="{{food.image}}" alt="image">
+                        </div>
+                        <span class="title multi-ellipsis">{{food.title}}</span>
+                        <span class="dc-price">{{food.price}} Vnđ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

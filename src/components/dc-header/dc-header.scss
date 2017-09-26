@@ -1,0 +1,49 @@
+dc-header {
+    $headerRowHeight: 45px;
+    width: 100%;
+    .dc-header {
+        color: map-get($DCColors, white);
+        background-color: map-get($DCColors, primary);
+        .header-title {
+            width: 100%;
+            height: $headerRowHeight;
+            .title {
+                font-size: 1.5em;
+                text-transform: uppercase;
+                width: 100%;
+                min-height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .header-button {
+                width: auto;
+                height: $headerRowHeight;
+                line-height: $headerRowHeight;
+                font-size: 1.8em;
+                padding: 0 map-get($DCSizes, defaultPadding);
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                ion-icon {
+                    vertical-align: text-bottom;
+                }
+                &.button-left {
+                    left: 0;
+                }
+                &.button-right {
+                    right: 0;
+                }
+            }
+        }
+        .search-bar {
+            .searchbar {
+                background: none !important;
+                padding: 0 map-get($DCSizes, defaultPadding);
+                .searchbar-input {
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+}

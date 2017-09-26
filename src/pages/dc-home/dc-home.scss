@@ -1,0 +1,29 @@
+page-dc-home {
+    .swiper-slide {
+        height: 220px;
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+    .swiper-pagination {
+        display: block !important;
+        .swiper-pagination-bullet-active {
+            background-color: map-get($DCColors, orange) !important;
+        }
+        .swiper-pagination-bullet {
+            transform: scale(.9);
+        }
+    }
+    .dc-price {
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
+    .section-body {
+        padding-right: 0 !important;
+    }
+}
