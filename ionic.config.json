@@ -1,6 +1,5 @@
 {
-  "name": "FoodApp",
-  "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {}
+    "name": "Bistro",
+    "app_id": "",
+    "type": "ionic-angular"
 }
