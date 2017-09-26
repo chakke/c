@@ -1,5 +1,6 @@
 {
-    "name": "Bistro",
-    "app_id": "",
-    "type": "ionic-angular"
+  "name": "Bistro",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {}
 }

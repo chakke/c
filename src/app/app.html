@@ -1,1 +1,32 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content" swipeEnabled="false" class="dc-menu" type="reveal">
+    <div class="menu-header">
+        <span class="main-title">Vui lòng đăng nhập để gọi món!</span>
+        <div class="button-group">
+            <span class="button button-left">Đăng nhập</span>
+            <span class="button button-right">Đăng ký</span>
+        </div>
+    </div>
+    <div class="menu-content">
+        <div *ngFor="let item of menuItems" [class.active]="item.active" class="menu-item" (tap)="itemClick(item)">
+            <span class="icon" [innerHTML]="item.icon"> 
+            </span>
+            <span class="title">{{item.title}}</span>
+        </div>
+
+        <div class="divider"></div>
+        <div class="menu-item">
+            <span class="icon">
+                <i class="fa fa-question-circle" aria-hidden="true"></i>
+            </span>
+            <span class="title">Hướng dẫn</span>
+        </div>
+        <div class="menu-item">
+            <span class="icon">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </span>
+            <span class="title">Thông tin nhà hàng</span>
+        </div>
+    </div>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

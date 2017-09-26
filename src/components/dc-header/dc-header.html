@@ -1,6 +1,6 @@
 <div class="dc-header">
     <div class="header-title">
-        <span class="header-button button-left">
+        <span class="header-button button-left" menuToggle>
             <ion-icon name="ios-menu-outline"></ion-icon>
         </span>
         <span class="title dc-big">
@@ -11,6 +11,6 @@
         </span>
     </div>
     <div class="search-bar">
-        <ion-searchbar placeholder="{{placholder}}"></ion-searchbar>
+        <ion-searchbar class="searchbar-ios" [class.searchbar-md]="false" placeholder="{{placholder}}"></ion-searchbar>
     </div>
 </div>
