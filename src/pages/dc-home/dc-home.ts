@@ -18,8 +18,7 @@ export class Food {
 
 export class DcHomePage {
   dailyFoods: Array<Food> = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log("constructor");
+  constructor(public navCtrl: NavController, public navParams: NavParams) { 
     this.dailyFoods = [
       new Food("Xôi lạp xưởng", 28000),
       new Food("Thịt bò Mỹ nướng sốt tiêu đen", 99000),
@@ -28,19 +27,6 @@ export class DcHomePage {
       new Food("Xôi lạp xưởng", 28000),
       new Food("Xôi lạp xưởng", 28000)
     ]
-  }
-  ionViewWillEnter() {
-    console.log('ionViewWillEnter');
-    // for (let i = 0; i < 100000; i++) {
-    //   console.log(i);
-    // }
-  }
-  ionViewDidEnter() {
-    console.log('ionViewDidEnter');
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad');
-  }
+  } 
 
 }

@@ -11,13 +11,13 @@ export class MyApp {
     {
       icon: ' <i class="fa fa-home" aria-hidden="true"></i>',
       title: 'Trang chủ',
-      page: '',
+      page: 'DcHomePage',
       active: true
     },
     {
       icon: '<i class="fa fa-list-alt" aria-hidden="true"></i>',
       title: 'Thực đơn',
-      page: '',
+      page: 'DcMenuPage',
       active: false
     },
     {

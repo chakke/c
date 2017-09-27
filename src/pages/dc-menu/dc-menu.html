@@ -1,0 +1,36 @@
+<ion-header>
+    <dc-header> </dc-header>
+</ion-header>
+
+<ion-content>
+    <div class="dc-content">
+        <div class="quick-menu">
+            <div class="item" *ngFor="let item of quickMenuItem" [class.active]="item.active" (click)="menuClick(item)">
+                <span class="icon" [style.color]="item.color" [style.background-color]="item.background" [innerHTML]="item.icon"> </span>
+                <span class="title">{{item.title}}</span>
+            </div>
+            <div style="flex-basis: 10px;min-width: 10px; min-height: 10px"></div>
+        </div>
+        <div class="dc-section">
+            <div class="food-item" *ngFor="let item of breakfastFoods" [class.active]="item.quantity > 0">
+                <div class="item-image">
+                    <img src="{{item.image}}" alt="img">
+                </div>
+                <div class="item-des">
+                    <span class="title">{{item.title}}</span>
+                    <span class="des">{{item.description}}</span>
+                    <span class="time">{{item.waittingTime}} phút</span>
+                </div>
+                <div class="item-order">
+                    <number-picker [number]="item.quantity" (onDataChange)="changeFoodQuantily(item, $event)" min="0" max="1000"></number-picker>
+                    <span class="price-div">
+                         <span class="dc-price">{{item.price}} Vnđ</span>
+                    </span>
+                </div>
+            </div>
+            <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+                <ion-infinite-scroll-content></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+        </div>
+    </div>
+</ion-content>
