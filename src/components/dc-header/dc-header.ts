@@ -8,6 +8,10 @@ export class DcHeaderComponent {
 
   @Input()
   placholder = "Tìm kiếm món ăn, dịch vụ, khuyến mãi";
+  @Input()
+  showSearchBar = true;
+  @Input()
+  title = "Bistro Dancer"
   constructor() { 
   }
 

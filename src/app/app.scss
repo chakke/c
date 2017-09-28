@@ -129,6 +129,75 @@
     }
 }
 
+.dc-button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: map-get($DCColors, white);
+    background-color: map-get($DCColors, primary);
+}
+
+.dc-button-outline {
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: map-get($DCColors, primary);
+    background-color: map-get($DCColors, white);
+    border: solid 1px;
+}
+
+.dc-step-group {
+    display: flex;
+    width: 100%;
+    .step {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        color: map-get($DCColors, gray);
+        justify-content: flex-start;
+        align-items: center;
+        min-width: 25%;
+        &.active {
+            .step-number {
+                color: map-get($DCColors, primary);
+            }
+            .step-title {
+                color: map-get($DCColors, black);
+                font-weight: 500;
+            }
+        }
+        &.has-arrow {
+            position: relative;
+            &::after {
+                content: '\2192';
+                display: block;
+                position: absolute;
+                right: -2.5em;
+                top: 0;
+                width: 3em;
+                height: 2em;
+                text-align: left;
+                font-size: 1.5em;
+                line-height: .9em;
+                color: map-get($DCColors, yellow);
+            }
+        }
+        .step-number {
+            display: block;
+            width: 1.5em;
+            height: 1.5em;
+            line-height: 1.5em;
+            text-align: center;
+            border: solid 1px;
+            border-radius: 20px;
+            margin-bottom: 5px;
+            padding: 0 5px;
+        }
+        .step-title {
+            text-align: center;
+        }
+    }
+}
+
 .dc-content {
     padding-bottom: 20px;
     .dc-section:last-child {
@@ -197,59 +266,83 @@
                 border-radius: 50%;
                 display: flex;
                 overflow: hidden;
+                max-width: 100px;
+                max-height: 100px;
                 img {
                     object-fit: cover;
                 }
             }
         }
     }
-    .food-item {
-        &.active {
-            .title {
-                color: map-get($DCColors, primary) !important;
-            }
+}
+
+.food-item {
+    border-bottom: solid 1px map-get($DCColors, lightgray);
+    &.active {
+        .title {
+            color: map-get($DCColors, primary) !important;
         }
-        &:last-child {
-            border-bottom: none;
-        }
-        padding: 16px;
+    }
+    &:last-child {
+        border-bottom: none;
+    }
+    padding: 16px;
+    display: flex;
+    .item-image {
+        width: 20%;
+        width: 20vw;
+        height: 65px;
+        height: 20vw;
+        border-radius: 50%;
+        display: inline-block;
+        overflow: hidden;
         display: flex;
-        .item-image {
-            width: 20%;
-            width: 20vw;
-            height: 65px;
-            height: 20vw;
-            border-radius: 50%;
-            display: inline-block;
-            overflow: hidden;
-            display: flex;
-            img {
-                object-fit: cover;
+        max-width: 100px;
+        max-height: 100px;
+        img {
+            object-fit: cover;
+        }
+    }
+    .item-des {
+        width: 55%;
+        padding-left: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .title {
+            display: block;
+            width: 100%;
+            padding: 5px 0;
+            font-weight: 500;
+            font-size: map-get($DCSizes, big);
+            color: map-get($DCColors, black);
+        }
+        .des {
+            display: block;
+            width: 100%;
+            color: map-get($DCColors, gray);
+        }
+        .time {
+            display: block;
+            width: 100%;
+            color: map-get($DCColors, green);
+        }
+    }
+    .item-order {
+        width: 25%;
+        text-align: center;
+        .dc-price {
+            font-size: map-get($DCSizes, big);
+        }
+        number-picker {
+            display: block;
+            width: 100%;
+            .number-picker {
+                height: 3.5em;
+                line-height: 3.5em;
+                width: 100%;
+                text-align: center;
             }
         }
-        .item-des {
-            width: 55%;
-            height: 100%;
-            padding-left: 10px;
-            .title {
-                display: block;
-                width: 100%;
-                padding: 5px 0;
-                font-weight: 500;
-                font-size: map-get($DCSizes, big);
-                color: map-get($DCColors, black);
-            }
-            .des {
-                display: block;
-                width: 100%;
-                color: map-get($DCColors, gray);
-            }
-            .time {
-                display: block;
-                width: 100%;
-                color: map-get($DCColors, green);
-            }
-        }
-        border-bottom: solid 1px map-get($DCColors, lightgray);
     }
 }

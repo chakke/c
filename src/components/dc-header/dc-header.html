@@ -4,13 +4,13 @@
             <ion-icon name="ios-menu-outline"></ion-icon>
         </span>
         <span class="title dc-big">
-          BISTRO DANCER
+         {{title}}
         </span>
         <span class="header-button button-right">
             <ion-icon name="ios-analytics-outline"></ion-icon>
         </span>
     </div>
-    <div class="search-bar">
+    <div class="search-bar" *ngIf="showSearchBar">
         <ion-searchbar class="searchbar-ios" [class.searchbar-md]="false" placeholder="{{placholder}}"></ion-searchbar>
     </div>
 </div>

@@ -38,18 +38,4 @@ page-dc-menu {
             }
         }
     }
-    .item-order {
-        width: 25%;
-        text-align: center;
-        number-picker {
-            display: block;
-            width: 100%;
-            .number-picker {
-                height: 3.5em;
-                line-height: 3.5em;
-                width: 100%;
-                text-align: center;
-            }
-        }
-    }
 }

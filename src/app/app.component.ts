@@ -35,7 +35,7 @@ export class MyApp {
     {
       icon: ' <i class="fa fa-object-group" aria-hidden="true"></i>',
       title: 'Dich vụ',
-      page: '',
+      page: 'DcServicePage',
       active: false
     },
   ]

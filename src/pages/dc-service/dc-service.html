@@ -1,0 +1,71 @@
+<ion-header>
+    <dc-header title="Dịch vụ" [showSearchBar]="false"></dc-header>
+</ion-header>
+<ion-content id="service-ion-content">
+    <div class="fixed-top" id="fixed-top">
+        <ion-segment [(ngModel)]="tab" class="segment-md" [class.segment-ios]="false" (ionChange)="segmentChanged()">
+            <ion-segment-button value="place">
+                Đặt chỗ
+            </ion-segment-button>
+            <ion-segment-button value="ship">
+                Ship đồ ăn
+            </ion-segment-button>
+            <ion-segment-button value="support">
+                Trợ giúp tại chỗ
+            </ion-segment-button>
+            <ion-segment-button value="taxi">
+                Gọi taxi
+            </ion-segment-button>
+        </ion-segment>
+        <div class="dc-step-group" *ngIf="tab=='ship'">
+            <div class="step" *ngFor="let step of steps" [class.active]="step.active" [class.has-arrow]="step.hasArrow">
+                <span class="step-number">{{step.number}}</span>
+                <span class="step-title">{{step.title}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="dc-content">
+        <div [ngSwitch]="tab" class="segment-content">
+            <div *ngSwitchCase="'place'" class="place-div">
+                <img src="https://cdn0.iconfinder.com/data/icons/activities-glyph/2048/2141_-_Having_dinner-512.png" alt="image">
+                <div class="button-group">
+                    <span>Chưa có yêu cầu đặt chỗ</span>
+                    <button class="dc-button">Thêm yêu cầu</button>
+                </div>
+            </div>
+            <div *ngSwitchCase="'ship'" class="ship-div">
+                <div class="service-section">
+                    <div class="section-header">
+                        <div class="icon">
+                            <i class="fa fa-sun-o"></i>
+                        </div>
+                        <div class="title">Bữa sáng</div>
+                        <div class="ordered">(2)MyYBoBam - (1)KhoaiChien</div>
+                        <div class="price">153.000 Vnđ</div>
+                        <div class="button-right">
+                            <span>
+                                <i class="fa fa-angle-up" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="section-body">
+                        <div class="food-item">
+                            <div class="item-image">
+                                <img alt="img" src="http://7monngonmoingay.vn/wp-content/uploads/2016/07/cach-lam-pho-bo-sot-vang-thom-ngon-nuc-mui.jpg">
+                            </div>
+                            <div class="item-des">
+                                <span class="title">Mỳ ý sốt bò bằm</span>
+                                <span class="des">Spaghetti Bolognese</span>
+                                <span class="price">59.000 Vnđ</span>
+                            </div>
+                            <div class="item-order">
+                                <button class="order-button dc-button">Chọn</button>
+                                <button class="order-button dc-button-outline">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>
