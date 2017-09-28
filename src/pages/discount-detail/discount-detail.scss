@@ -1,0 +1,18 @@
+page-discount-detail {
+    .big-title {
+        width: 100%;
+        font-size: 2.5em;
+        font-weight: 500;
+        padding: 16px;
+        color: map-get($DCColors, black);
+        text-transform: uppercase;
+        text-align: center;
+    }
+    .image {
+        padding: 0 16px;
+    }
+    .content {
+        padding: 5px 16px 10px 16px;
+        color: map-get($DCColors, black);
+    }
+}

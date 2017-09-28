@@ -17,6 +17,10 @@
     color: map-get($DCColors, black);
 }
 
+.show-page .show-page {
+    font-size: 1em;
+}
+
 .dc-big {
     font-size: map-get($DCSizes, big);
 }

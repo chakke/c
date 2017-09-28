@@ -1,0 +1,21 @@
+<ion-header>
+    <dc-header (onSearch)="search($event)" [showSearchBar]="false" [showBackButton]="true" [backButtonType]="1" [title]="'Khuyến mãi'"> </dc-header>
+</ion-header>
+
+
+<ion-content>
+    <div class="dc-content">
+        <div class="big-title">
+            <span>{{discount.title}}</span>
+        </div>
+        <div class="image">
+            <img src="{{discount.image}}" alt="image">
+        </div>
+        <div class="content">
+            <p>Như một món quà nhỏ gửi tặng khách hàng thay lời chúc một sinh nhật vui vẻ , hạnh phúc, King BBQ gửi tặng khách hàng ưu đãi:</p>
+            <p>- Giảm 10% tổng hóa đơn khi dùng bữa trong tháng sinh nhật với khách hàng sở hữu thẻ thành viên</p>
+            <p>- Giảm 15% tổng hóa đơn trong cả tháng sinh nhật với khách hàng sở hữu thẻ GOLD</p>
+            <p>- Tặng bánh sinh nhật vào đúng ngày sinh nhật, không giới hạn số lượng khách trong bàn.</p>
+        </div>
+    </div>
+</ion-content>

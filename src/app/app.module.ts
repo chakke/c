@@ -6,12 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component'; 
 import {ComponentsModule} from '../components/components.module'
+import { FoodServiceProvider } from '../providers/food-service/food-service';
+import {  HttpService } from '../providers/http-service';
+import { HttpModule  } from '@angular/http';
 @NgModule({
   declarations: [
     MyApp, 
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     ComponentsModule
   ],
@@ -22,7 +26,9 @@ import {ComponentsModule} from '../components/components.module'
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, 
+    FoodServiceProvider,
+    HttpService
   ]
 })
 export class AppModule {}

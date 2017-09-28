@@ -1,7 +1,10 @@
 <div class="dc-header">
     <div class="header-title">
-        <span class="header-button button-left" menuToggle>
+        <span class="header-button button-left" menuToggle *ngIf="!showBackButton">
             <ion-icon name="ios-menu-outline"></ion-icon>
+        </span>
+        <span class="header-button button-left" navPop *ngIf="showBackButton">
+            <ion-icon name="{{backButton}}"></ion-icon>
         </span>
         <span class="title dc-big">
          {{title}}
@@ -11,6 +14,6 @@
         </span>
     </div>
     <div class="search-bar" *ngIf="showSearchBar">
-        <ion-searchbar class="searchbar-ios" [class.searchbar-md]="false" placeholder="{{placholder}}"></ion-searchbar>
+        <ion-searchbar class="searchbar-ios" [class.searchbar-md]="false" placeholder="{{placholder}}" [(ngModel)]="searchKeyword" (ionInput)="search()"></ion-searchbar>
     </div>
 </div>
