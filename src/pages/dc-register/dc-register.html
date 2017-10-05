@@ -1,0 +1,38 @@
+<ion-header>
+    <dc-header [showSearchBar]="false" [showBackButton]="true" [showOrder]="false" [title]="'Đăng ký'"> </dc-header>
+</ion-header>
+
+
+<ion-content>
+    <div class="logo-image">
+        <img src="assets/images/login/logo.png" alt="">
+    </div>
+
+    <form (ngSubmit)="register()" [formGroup]="loginForm">
+        <div class="login-form">
+            <div class="input-div">
+                <span class="icon" [class.valid]="loginForm.controls.phone.valid"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                <ion-input type="tel" [(ngModel)]="phone" formControlName="phone" placeholder="Số điện thoại" (ionChange)="checkForm()"></ion-input>
+                <span *ngIf="!loginForm.controls.phone.valid && isSubmitted" class="validate-message">{{phoneErrorMessage}}</span>
+            </div>
+            <div class="input-div">
+                <span class="icon" [class.valid]="loginForm.controls.password.valid"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                <ion-input type="password" [(ngModel)]="password" formControlName="password" placeholder="Mật khẩu" (ionChange)="checkForm()"></ion-input>
+                <span *ngIf="!loginForm.controls.password.valid && isSubmitted" class="validate-message">{{passwordErrorMessage}}</span>
+            </div>
+            <div class="input-div">
+                <span class="icon" [class.valid]="loginForm.controls.retypePass.valid"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                <ion-input type="password" [(ngModel)]="retypePass" formControlName="retypePass" placeholder="Nhập lại mật khẩu" (ionChange)="checkForm()"></ion-input>
+                <span *ngIf="!loginForm.controls.retypePass.valid && isSubmitted" class="validate-message">{{retypePassErrorMessage}}</span>
+            </div>
+        </div>
+        <div class="login-button">
+            <button ion-button class="dc-button" type="submit">
+                Đăng ký
+            </button>
+        </div>
+    </form>
+    <div class="register-button">
+        <span (tap)="gotoLogin()">Đã có tài khoản?</span>
+    </div>
+</ion-content>

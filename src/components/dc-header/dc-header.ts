@@ -1,12 +1,17 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { NavController, Content } from 'ionic-angular';
+import { User } from '../../providers/classes/user';
+import { AppControllerProvider } from '../../providers/app-controller/app-controller';
 
 @Component({
   selector: 'dc-header',
   templateUrl: 'dc-header.html'
 })
 export class DcHeaderComponent {
+  orderedFood = [];
   searchKeyword = "";
-  backButtons = ["ios-arrow-round-back-outline", "ios-close-outline"]
+  user: User;
+  backButtons = ["ios-arrow-round-back-outline", "ios-close-outline"];
   @Input()
   placholder = "Tìm kiếm món ăn, dịch vụ, khuyến mãi";
   @Input()
@@ -15,6 +20,8 @@ export class DcHeaderComponent {
   title = "Bistro Dancer";
   @Input()
   showBackButton = false;
+  @Input()
+  showOrder = true;
 
   //Just use 1 in 2 following propertives
   @Input()
@@ -22,15 +29,38 @@ export class DcHeaderComponent {
   @Input()
   backButton = "ios-arrow-round-back-outline";
 
+  @Input()
+  ionContent;
+
   @Output()
   onSearch = new EventEmitter<string>();
-  constructor() {
+
+  constructor(private appController: AppControllerProvider, private navCtrl: NavController) {
   }
   ngAfterViewInit() {
     this.backButton = this.backButtons[this.backButtonType];
+    this.user = this.appController.getUserService().getUser();
+    this.getOrderLength();
   }
   search() {
     this.onSearch.emit(this.searchKeyword);
   }
 
+  checkOrder() {
+    if (this.user.isLoggedIn) {
+      this.navCtrl.push("DcOrderPage");
+    } else {
+      this.navCtrl.push("DcLoginPage");
+    }
+  }
+
+  getOrderLength() {
+    this.orderedFood = this.appController.getFoodService().getOrderedFoods();
+  }
+  scrollToTop() {
+    if (this.ionContent) {
+      this.ionContent = this.ionContent as Content;
+      this.ionContent.scrollToTop(300);
+    }
+  }
 }

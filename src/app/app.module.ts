@@ -1,14 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component'; 
-import {ComponentsModule} from '../components/components.module'
+import {ComponentsModule} from '../components/components.module';
 import { FoodServiceProvider } from '../providers/food-service/food-service';
 import {  HttpService } from '../providers/http-service';
 import { HttpModule  } from '@angular/http';
+import { UserServiceProvider } from '../providers/user-service/user-service';
+import { AppControllerProvider } from '../providers/app-controller/app-controller';
+import { CategoryServiceProvider } from '../providers/category-service/category-service';
 @NgModule({
   declarations: [
     MyApp, 
@@ -16,6 +20,7 @@ import { HttpModule  } from '@angular/http';
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     IonicModule.forRoot(MyApp),
     ComponentsModule
   ],
@@ -28,7 +33,10 @@ import { HttpModule  } from '@angular/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}, 
     FoodServiceProvider,
-    HttpService
+    HttpService,
+    UserServiceProvider,
+    AppControllerProvider,
+    CategoryServiceProvider
   ]
 })
 export class AppModule {}

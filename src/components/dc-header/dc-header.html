@@ -6,11 +6,12 @@
         <span class="header-button button-left" navPop *ngIf="showBackButton">
             <ion-icon name="{{backButton}}"></ion-icon>
         </span>
-        <span class="title dc-big">
+        <span class="title dc-big" (tap)="scrollToTop()">
          {{title}}
         </span>
-        <span class="header-button button-right">
+        <span *ngIf="showOrder" class="header-button button-right" (tap)="checkOrder()">
             <ion-icon name="ios-analytics-outline"></ion-icon>
+            <span class="order-number" *ngIf="orderedFood.length">{{orderedFood.length}}</span>
         </span>
     </div>
     <div class="search-bar" *ngIf="showSearchBar">

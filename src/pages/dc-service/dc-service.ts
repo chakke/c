@@ -36,6 +36,8 @@ export class DcServicePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad DcServicePage');
   }

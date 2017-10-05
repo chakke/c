@@ -1,34 +1,34 @@
 <ion-header>
-    <dc-header title="Thực đơn"> </dc-header>
+    <dc-header title="Thực đơn" [ionContent]="content" (onSearch)="onSearch($event)"> </dc-header>
 </ion-header>
 
-<ion-content>
+<ion-content #content>
     <div class="dc-content">
-        <div class="quick-menu">
-            <div class="item" *ngFor="let item of quickMenuItem" [class.active]="item.active" (click)="menuClick(item)">
-                <span class="icon" [style.color]="item.color" [style.background-color]="item.background" [innerHTML]="item.icon"> </span>
-                <span class="title">{{item.title}}</span>
+        <div class="quick-menu" id="quick-menu">
+            <div class="item" #items *ngFor="let category of showCategories; let i = index" id="quick-menu-item-{{category.id}}" [class.active]="category.id == selectedCategory.id" (click)="menuClick(category)">
+                <span class="icon" [style.color]="category.color" [style.background-color]="category.background" [innerHTML]="category.icon"> </span>
+                <span class="title">{{category.titleVie}}</span>
             </div>
             <div style="flex-basis: 10px;min-width: 10px; min-height: 10px"></div>
         </div>
         <div class="dc-section">
-            <div class="food-item" *ngFor="let item of breakfastFoods" [class.active]="item.quantity > 0">
-                <div class="item-image">
-                    <img src="{{item.image}}" alt="img">
+            <div class="food-item" *ngFor="let food of foods" [class.active]="food.quantity > 0">
+                <div class="item-image" (tap)="gotoDetail(food)">
+                    <img src="{{food.image}}" alt="img">
                 </div>
-                <div class="item-des">
-                    <span class="title">{{item.title}}</span>
-                    <span class="des">{{item.description}}</span>
-                    <span class="time">{{item.waittingTime}} phút</span>
+                <div class="item-des" (tap)="gotoDetail(food)">
+                    <span class="title">{{food.titleVie}}</span>
+                    <span class="des">{{food.description || "Bistro Dancer"}}</span>
+                    <span class="time">{{food.waittingTime || 5}} phút</span>
                 </div>
                 <div class="item-order">
-                    <number-picker [number]="item.quantity" (onDataChange)="changeFoodQuantily(item, $event)" min="0" max="1000"></number-picker>
+                    <number-picker [number]="food.quantily" (onDataChange)="changeFoodQuantily(food, $event)" min="0" max="1000"></number-picker>
                     <span class="price-div">
-                         <span class="dc-price">{{item.price}} Vnđ</span>
+                         <span class="dc-price">{{food.price.toLocaleString()}} Vnđ</span>
                     </span>
                 </div>
             </div>
-            <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll *ngIf="!isMaxItem" (ionInfinite)="doInfinite($event)">
                 <ion-infinite-scroll-content></ion-infinite-scroll-content>
             </ion-infinite-scroll>
         </div>

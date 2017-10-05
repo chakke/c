@@ -1,7 +1,7 @@
 <ion-header>
-    <dc-header (onSearch)="search($event)"> </dc-header>
+    <dc-header (onSearch)="search($event)" [ionContent]="content"> </dc-header>
 </ion-header>
-<ion-content>
+<ion-content #content>
     <div class="dc-content">
         <div class="slide">
             <ion-slides pager="true" autoplay="3000">
@@ -11,35 +11,24 @@
 
             </ion-slides>
         </div>
-        <div class="dc-section">
+        <div [hidden]="!category.numberOfItems" class="dc-section" *ngFor="let category of showCategories">
             <div class="section-header">
-                <span class="title">Món ngon hôm nay</span>
-                <span class="button-right round">Xem tất cả</span>
+                <span class="title">{{category.titleVie}}</span>
+                <span class="button-right round" (click)="goToMenu(category)">Xem tất cả </span>
             </div>
             <div class="section-body horizontal-scroll">
-                <div *ngFor="let food of dailyFoods" class="item">
+                <div *ngFor="let food of getFoodByCategory(category) | async" class="item" (click)="gotoDetail(food)">
                     <div class="item-image">
                         <img src="{{food.image}}" alt="image">
                     </div>
-                    <span class="title">{{food.title}}</span>
-                    <span class="dc-price">{{food.price}} Vnđ</span>
+                    <span class="title">{{food.titleVie}}</span>
+                    <span class="dc-price">{{food.price.toLocaleString()}} {{food.currency}}</span>
                 </div>
             </div>
         </div>
-        <div class="dc-section">
-            <div class="section-header">
-                <span class="title">Các món được yêu thích</span>
-                <span class="button-right round">Xem tất cả</span>
-            </div>
-            <div class="section-body horizontal-scroll">
-                <div *ngFor="let food of favoriteFoods" class="item">
-                    <div class="item-image">
-                        <img src="{{food.image}}" alt="image">
-                    </div>
-                    <span class="title">{{food.title}}</span>
-                    <span class="dc-price">{{food.price}} Vnđ</span>
-                </div>
-            </div>
-        </div>
+        <ion-infinite-scroll *ngIf="categoryIndex < categories.length" (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+
     </div>
 </ion-content>

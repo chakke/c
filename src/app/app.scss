@@ -21,12 +21,20 @@
     font-size: 1em;
 }
 
+[nowrap] {
+    white-space: nowrap;
+}
+
+.italic {
+    font-style: italic;
+}
+
 .dc-big {
     font-size: map-get($DCSizes, big);
 }
 
-.dc-litte-big {
-    font-size: map-get($DCSizes, littelBig);
+.dc-little-big {
+    font-size: map-get($DCSizes, littleBig);
 }
 
 .dc-small {
@@ -37,8 +45,33 @@
     color: map-get($DCColors, black);
 }
 
+.dc-gray {
+    color: map-get($DCColors, gray);
+}
+
+.dc-green {
+    color: map-get($DCColors, green);
+}
+
+.dc-blue {
+    color: map-get($DCColors, blue);
+}
+
 .dc-bold {
     font-weight: 500;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.dc-textarea {
+    .text-input {
+        border-radius: 10px;
+        border: solid 1px map-get($DCColors, lightgray);
+        padding: 8px;
+        width: 100%;
+    }
 }
 
 .dc-price {
@@ -209,6 +242,31 @@
     }
 }
 
+.dc-footer {
+    .button-group {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding: 10px 0 20px 0;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        -webkit-box-shadow: 0px -1px 10px rgba(17, 34, 51, 0.1);
+        box-shadow: 0px -1px 10px rgba(17, 34, 51, 0.1);
+        border-top: solid 1px map-get($DCColors, lightgray);
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        .dc-button,
+        .dc-button-outline {
+            font-size: 1em;
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+    }
+}
+
 .dc-section {
     border-bottom: solid 1px map-get($DCColors, lightgray);
     background-color: map-get($DCColors, white);
@@ -227,7 +285,7 @@
         .button-right {
             position: absolute;
             &.round {
-                height: 1.5em;
+                height: 1.6em;
                 top: .75em;
                 right: map-get($DCSizes, paddingRight);
                 line-height: 1.5em;
@@ -278,6 +336,12 @@
             }
         }
     }
+}
+
+.dc-divider {
+    width: 100%;
+    height: 2px;
+    border-bottom: dotted 2px map-get($DCColors, primary);
 }
 
 .food-item {

@@ -15,6 +15,7 @@ dc-header {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                white-space: nowrap;
             }
             .header-button {
                 width: auto;
@@ -33,6 +34,20 @@ dc-header {
                 }
                 &.button-right {
                     right: 0;
+                    .order-number {
+                        font-size: .5em;
+                        display: block;
+                        padding: .2em .4em;
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        border-radius: 20px;
+                        background-color: map-get($DCColors, yellow);
+                        line-height: 1em;
+                        text-align: center;
+                        transform: translate3d(20%, -120%, 0);
+                        color: #000;
+                    }
                 }
             }
         }

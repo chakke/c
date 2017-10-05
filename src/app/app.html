@@ -1,9 +1,15 @@
 <ion-menu [content]="content" swipeEnabled="false" class="dc-menu" type="reveal">
-    <div class="menu-header">
+    <div *ngIf="user && !user.isLoggedIn" class="menu-header">
         <span class="main-title">Vui lòng đăng nhập để gọi món!</span>
         <div class="button-group">
-            <span class="button button-left">Đăng nhập</span>
-            <span class="button button-right">Đăng ký</span>
+            <span class="button button-left" (click)="gotoLogin()">Đăng nhập</span>
+            <span class="button button-right" (click)="gotoRegister()">Đăng ký</span>
+        </div>
+    </div>
+    <div *ngIf="user && user.isLoggedIn" class="menu-header">
+        <span class="main-title">Xin chào: {{user.name}}</span>
+        <div class="button-group">
+            <span class="button" (click)="logOut()">Đăng xuất</span>
         </div>
     </div>
     <div class="menu-content">
