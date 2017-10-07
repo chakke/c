@@ -1,0 +1,133 @@
+page-dc-ship-fill-form {
+    .col {
+        padding: 0;
+    }
+    .row {
+        width: 100%;
+    }
+    .fixed-top {
+        background-color: #FFF;
+        position: absolute;
+        top: 45px;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+    }
+    .header-md::after {
+        display: none;
+    }
+    .header-md {
+        border: solid 1px map-get($DCColors, primary);
+    }
+    .dc-step-group {
+        padding-top: 5px;
+        padding-bottom: 10px;
+        background-color: map-get($DCColors, primary);
+        .step {
+            color: rgba(255, 255, 255, 0.6);
+            &.active {
+                &.has-arrow::after {
+                    opacity: 1;
+                }
+                .step-title {
+                    color: map-get($DCColors, white);
+                }
+                .step-number {
+                    background-color: map-get($DCColors, white);
+                }
+            }
+            &.done {
+                .step-number {
+                    border: none;
+                    background-color: rgba(255, 255, 255, 0.5);
+                    color: map-get($DCColors, primary);
+                }
+            }
+            &.has-arrow::after {
+                opacity: .5;
+            }
+        }
+    }
+    .error-message {
+        width: 100%;
+        padding: 10px map-get($DCSizes, deffaultPadding);
+        text-align: center;
+        color: map-get($DCColors, gray);
+        &:empty {
+            display: none;
+        }
+    }
+    .form {
+        padding: 15px map-get($DCSizes, paddingRight) 15px map-get($DCSizes, deffaultPadding);
+        $inputHeight: 2.5em;
+        $divPadding: 6px;
+        background-color: #f9f9f9;
+        margin: 20px 0;
+        ion-datetime {
+            position: absolute;
+            top: $divPadding;
+            left: $divPadding;
+            height: $inputHeight;
+            width: 1.5*$inputHeight;
+            z-index: 10;
+            .datetime-text {
+                display: none;
+            }
+        }
+        .input-div {
+            display: flex;
+            position: relative;
+            padding: $divPadding;
+        }
+        .text-input {
+            width: 100%;
+            border: solid 1px map-get($DCColors, lightgray);
+            border-radius: 20px;
+            line-height: $inputHeight;
+            padding-left: 1.5*$inputHeight;
+            text-align: center;
+            color: map-get($DCColors, black);
+            margin: 0;
+            padding-right: 10px;
+            background-color: map-get($DCColors, white);
+        }
+        ion-textarea {
+            .text-input {
+                border-radius: 10px !important;
+                height: 3 * $inputHeight !important;
+            }
+        }
+        .icon {
+            position: absolute;
+            top: $divPadding;
+            left: $divPadding;
+            height: $inputHeight;
+            color: map-get($DCColors, primary);
+            width: 1.5*$inputHeight;
+            line-height: $inputHeight;
+            text-align: center;
+            z-index: 1;
+        }
+        .ng-invalid:not(form) {
+            .text-input {
+                border-color: rgba(187, 42, 50, 0.69);
+            }
+        }
+    }
+    .button-group {
+        width: 100%;
+        text-align: center;
+        .dc-button {
+            padding: 6px 26px !important;
+            margin: 5px;
+            font-size: 1em !important;
+            height: auto !important;
+        }
+        .dc-button-outline {
+            padding: 5px 26px !important;
+            margin: 5px;
+            font-size: 1em !important;
+            height: auto !important;
+        }
+    }
+}

@@ -219,7 +219,6 @@
             }
         }
         .step-number {
-            display: block;
             width: 1.5em;
             height: 1.5em;
             line-height: 1.5em;
@@ -228,6 +227,9 @@
             border-radius: 20px;
             margin-bottom: 5px;
             padding: 0 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .step-title {
             text-align: center;

@@ -17,25 +17,29 @@ export class DcShipPage {
       number: 1,
       title: "Chọn món",
       active: true,
-      hasArrow: true
+      hasArrow: true, 
+      isDone: false
     },
     {
       number: 2,
       title: "Điền thông tin",
       active: false,
-      hasArrow: true
+      hasArrow: true,
+      isDone: false
     },
     {
       number: 3,
       title: "Phương thức thanh toán",
       active: false,
-      hasArrow: true
+      hasArrow: true,
+      isDone: false
     },
     {
       number: 4,
       title: "Xác nhận",
       active: false,
-      hasArrow: false
+      hasArrow: false,
+      isDone: false
     }
   ]
 
@@ -145,11 +149,12 @@ export class DcShipPage {
     this.orderedFoods = [];
   }
 
-  segmentChanged() {
-
+  continueOrder(){
+    if(this.orderedFoods.length>0){
+      this.navCtrl.push("DcShipFillFormPage");
+    }
   }
-
-
+ 
   search() {
     this.createDefault();
     this.loadMorePopularFoods();
