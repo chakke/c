@@ -22,7 +22,7 @@ export class Food {
         wattingTime?: number) {
         this.id = id;
         this.category = category;
-        this.titleVie = titleVie;
+        this.titleVie = Utils.capitalizeFirstLetter(titleVie);
         this.titleEng = titleEng;
         this.price = (price ? price : 0);
         this.image = (image ? AssetsUrl.FOOD_IMG + image : AssetsUrl.NO_IMAGE);

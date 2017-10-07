@@ -27,13 +27,13 @@ export class AppControllerProvider {
     {
       icon: '<i class="fa fa-handshake-o" aria-hidden="true"></i>',
       title: 'Chương trình khuyến mại',
-      page: '',
+      page: 'DcPromotionPage',
       active: false
     },
     {
       icon: ' <i class="fa fa-bell-o" aria-hidden="true"></i>',
       title: 'Đặt món',
-      page: '',
+      page: 'DcShipPage',
       active: false
     },
     {
@@ -54,7 +54,7 @@ export class AppControllerProvider {
     this.getDatas();
   }
 
-  getMenuItems() { 
+  getMenuItems() {
     return this.menuItems;
   }
 

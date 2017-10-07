@@ -60,7 +60,11 @@ export class Utils {
       }
       return arr.join('');
     }
-  
+    
+    public static capitalizeFirstLetter(str: string){
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     public static bodauTiengViet(str: string): string {
       str = str.toLowerCase();
       str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');

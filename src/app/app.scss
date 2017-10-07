@@ -284,16 +284,16 @@
         }
         .button-right {
             position: absolute;
+            height: 1.6em;
+            top: .75em;
+            right: map-get($DCSizes, paddingRight);
+            line-height: 1.5em;
+            padding: 0 10px;
+            display: block;
+            color: map-get($DCColors, red);
             &.round {
-                height: 1.6em;
-                top: .75em;
-                right: map-get($DCSizes, paddingRight);
-                line-height: 1.5em;
-                padding: 0 10px;
                 border-radius: 20px;
                 border: solid 1px map-get($DCColors, red);
-                display: block;
-                color: map-get($DCColors, red);
             }
         }
     }

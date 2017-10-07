@@ -72,8 +72,32 @@ export class FoodServiceProvider {
       return Observable.of(filteredFoods);
     }
   }
+  getOrderFoodByCategory(category: number, keyword?: string, startIndex?: number, count?: number): Observable<Array<OrderedFood>> {
+    let filteredFoods: Array<any> = this.allFoods.filter(elm => {
+      return elm.category == category;
+    });
+    if (keyword) {
+      keyword = keyword.toLowerCase();
+      filteredFoods = filteredFoods.filter(food => {
+        return food.keyWord.includes(keyword);
+      });
+    }
+    filteredFoods.forEach(element => {
+      element = element as OrderedFood;
+      element["quantily"] = 0;
+    });
+    if (!isNaN(startIndex) && !isNaN(count)) {
+      return Observable.of(filteredFoods.slice(startIndex, startIndex + count));
+    } else {
+      return Observable.of(filteredFoods);
+    }
+  }
 
   getOrderedFoods() {
     return this.orderedFood;
+  }
+
+  getPopularFoods(keyword?: string, startIndex?: number, count?: number): Observable<Array<Food>> {
+    return this.getFoodByCategory(1, keyword, startIndex, count);
   }
 }

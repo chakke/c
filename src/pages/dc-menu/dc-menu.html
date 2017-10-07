@@ -12,7 +12,7 @@
             <div style="flex-basis: 10px;min-width: 10px; min-height: 10px"></div>
         </div>
         <div class="dc-section">
-            <div class="food-item" *ngFor="let food of foods" [class.active]="food.quantity > 0">
+            <div class="food-item" *ngFor="let food of foods" [class.active]="food.quantily > 0">
                 <div class="item-image" (tap)="gotoDetail(food)">
                     <img src="{{food.image}}" alt="img">
                 </div>
