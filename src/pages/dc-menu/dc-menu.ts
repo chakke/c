@@ -72,17 +72,16 @@ export class DcMenuPage {
     this.selectedCategory = new Category(0, "", "");
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DcMenuPage');
+  ionViewDidLoad() { 
+    if (this.navParams.get("category")) {
+      this.selectedCategory = this.navParams.get("category");
+    }
     this.getAllCategorires();
     this.loadMoreFoods();
     this.quickMenu = <HTMLElement>document.getElementById("quick-menu");
   }
 
-  ionViewDidEnter() {
-    if (this.navParams.get("category")) {
-      this.selectedCategory = this.navParams.get("category");
-    }
+  ionViewDidEnter() { 
     console.log(this.items);
     this.items.changes.subscribe(event => {
       if (this.scrollToActiveItem) {

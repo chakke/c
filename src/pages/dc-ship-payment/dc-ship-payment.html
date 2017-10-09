@@ -1,0 +1,61 @@
+<ion-header>
+    <dc-header title="Dịch vụ" [showBackButton]="true" [showSearchBar]="false" [ionContent]="shipContent"></dc-header>
+</ion-header>
+<div class="fixed-top" id="ship-payment-fixed-top">
+    <div class="dc-step-group">
+        <div class="step" *ngFor="let step of steps" [class.done]="step.isDone" [class.active]="step.active" [class.has-arrow]="step.hasArrow">
+            <span class="step-number" [innerHTML]="step.isDone? checkedIcon : step.number"></span>
+            <span class="step-title">{{step.title}}</span>
+        </div>
+    </div>
+</div>
+
+<ion-content id="ship-payment-ion-content">
+    <div class="dc-content" radio-group [(ngModel)]="method" (ionChange)="paymentMethodChange($event)">
+        <form (ngSubmit)="continue()" [formGroup]="form">
+            <div class="form">
+                <div class="item">
+                    <ion-radio item-left value="cash" class="radio-md" [class.radio-ios]="false"></ion-radio>
+                    <span class="text">Thanh toán khi nhận hàng</span>
+                </div>
+                <div class="item">
+                    <ion-radio item-left value="master" class="radio-md" [class.radio-ios]="false"></ion-radio>
+                    <span class="text">Thẻ tín dụng ghi nợ</span>
+                    <span class="right-image">
+                      <img src="http://www.pngmart.com/files/3/Credit-Card-Visa-And-Master-Card-PNG-HD.png" alt="">
+                    </span>
+                </div>
+                <div class="form-padding">
+                    <div class="input-div">
+                        <input [(ngModel)]="card" formControlName="card" placeholder="Số thẻ" class="text-input" type="text" />
+                    </div>
+                    <div class="input-div">
+                        <input [(ngModel)]="name" formControlName="name" placeholder="Tên in trên thẻ" type="text" class="text-input" />
+                    </div>
+                    <ion-row>
+                        <ion-col col-6>
+                            <div class="input-div">
+                                <input [(ngModel)]="expired" formControlName="expired" placeholder="Ngày hết hạn" type="text" class="text-input" />
+                            </div>
+                        </ion-col>
+                        <ion-col col-6>
+                            <div class="input-div">
+                                <input [(ngModel)]="ccv" formControlName="ccv" placeholder="CCV/CVV" type="text" class="text-input" />
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <div class="item">
+                    <ion-radio item-left value="bank" class="radio-md" [class.radio-ios]="false"></ion-radio>
+                    <span class="text">Thẻ ATM nội địa/Internet banking</span>
+                </div>
+            </div>
+            <div class="error-message">{{errorMessage}}</div>
+            <div class="button-group">
+                <button ion-button type="button" class="dc-button-outline" (tap)="getBack()">Quay lại</button>
+                <button ion-button class="dc-button">Tiếp tục</button>
+            </div>
+        </form>
+
+    </div>
+</ion-content>

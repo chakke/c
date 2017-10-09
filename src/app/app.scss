@@ -12,6 +12,7 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+$headerRowHeight: 45px;
 .show-page {
     font-size: .8em;
     color: map-get($DCColors, black);
@@ -155,8 +156,12 @@
             }
             .icon {
                 font-size: 1.2em;
+                margin: auto 0;
                 margin-right: 8px;
                 color: map-get($DCColors, yellow);
+                width: 1.2em;
+                height: 1.2em;
+                display: inline-block;
                 i,
                 ion-icon {
                     vertical-align: middle;
@@ -266,6 +271,20 @@
             padding: 5px 10px;
             margin: 0 5px;
         }
+    }
+}
+
+.fixed-top {
+    background-image: url('/assets/images/main-icon/top_bar_3.png');
+    background-position: 0px -1 * $headerRowHeight;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-color: map-get($DCColors, primary) !important;
+    .segment {
+        background-color: #FFF;
+    }
+    .dc-step-group {
+        background-color: transparent;
     }
 }
 

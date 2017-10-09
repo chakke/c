@@ -6,54 +6,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'dc-service.html',
 })
 export class DcServicePage {
-  tab = "place";
-  steps = [
+
+  serviceItems = [
     {
-      number: 1,
-      title: "Chọn món",
-      active: true,
-      hasArrow: true
+      title: "Đặt chỗ",
+      des: "Vui lòng đặt chỗ ít nhất 1 giờ trước khi đến để được phục vụ tốt nhất",
+      icon: "icon_booking.png",
+      page: ""
     },
     {
-      number: 2,
-      title: "Điền thông tin",
-      active: false,
-      hasArrow: true
+      title: "Ship đồ ăn",
+      des: "Thanh toán và giao hàng tận nơi bằng tiền mặt hay thẻ tín dụng, Paypal",
+      icon: "icon_ship.png",
+      page: ""
     },
     {
-      number: 3,
-      title: "Phương thức thanh toán",
-      active: false,
-      hasArrow: true
+      title: "Trợ giúp tại chỗ",
+      des: "Nhân viên nhà hàng sẽ lập tức tới bàn của quý khách để nhận yêu cầu",
+      icon: "icon_help.png",
+      page: ""
     },
     {
-      number: 4,
-      title: "Xác nhận",
-      active: false,
-      hasArrow: false
-    }
+      title: "Gọi taxi",
+      des: "Taxi theo yêu cầu của quý khách sẽ đến trong vòng 5-10 phút",
+      icon: "icon_taxi.png",
+      page: ""
+    },
   ]
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad DcServicePage');
   }
-
-  segmentChanged() {
-    let scrollContent = <HTMLElement>document.querySelector("#service-ion-content .scroll-content");
-    let fixedTop = <HTMLElement>document.getElementById('fixed-top'); 
-    setTimeout(() => {
-      if (scrollContent && fixedTop) {
-        scrollContent.style.paddingTop = fixedTop.offsetHeight + "px";
-      }
-    }, 0)
-    //Why need to setTimeout?
-    //Because when switch tab = ship. .dc-step-group element is not added to doom immediately. So just wait a tick.
-  }
-
-
-
 }

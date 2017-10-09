@@ -14,22 +14,25 @@
     </div>
     <div class="menu-content">
         <div *ngFor="let item of menuItems" [class.active]="item.active" class="menu-item" (tap)="itemClick(item)">
-            <span class="icon" [innerHTML]="item.icon"> 
-            </span>
+            <!-- <span class="icon" [innerHTML]="item.icon"> 
+            </span> -->
+            <img src="{{item.icon}}" alt="" class="icon">
             <span class="title">{{item.title}}</span>
         </div>
 
         <div class="divider"></div>
         <div class="menu-item">
-            <span class="icon">
+            <!-- <span class="icon">
                 <i class="fa fa-question-circle" aria-hidden="true"></i>
-            </span>
+            </span> -->
+            <img src="assets/images/main-icon/icon_guide.png" alt="" class="icon">
             <span class="title">Hướng dẫn</span>
         </div>
         <div class="menu-item">
-            <span class="icon">
+            <!-- <span class="icon">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
-            </span>
+            </span> -->
+            <img src="assets/images/main-icon/icon_info.png" alt="" class="icon">
             <span class="title">Thông tin nhà hàng</span>
         </div>
     </div>

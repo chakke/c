@@ -50,7 +50,7 @@ page-dc-ship-fill-form {
     }
     .error-message {
         width: 100%;
-        padding: 10px map-get($DCSizes, deffaultPadding);
+        padding: 10px map-get($DCSizes, defaultPadding);
         text-align: center;
         color: map-get($DCColors, gray);
         &:empty {
@@ -58,7 +58,7 @@ page-dc-ship-fill-form {
         }
     }
     .form {
-        padding: 15px map-get($DCSizes, paddingRight) 15px map-get($DCSizes, deffaultPadding);
+        padding: 15px map-get($DCSizes, paddingRight) 15px map-get($DCSizes, defaultPadding);
         $inputHeight: 2.5em;
         $divPadding: 6px;
         background-color: #f9f9f9;

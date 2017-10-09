@@ -11,7 +11,7 @@ export class DcHeaderComponent {
   orderedFood = [];
   searchKeyword = "";
   user: User;
-  backButtons = ["ios-arrow-round-back-outline", "ios-close-outline"];
+  backButtons = ["assets/images/main-icon/btn_back.png"];
   @Input()
   placholder = "Tìm kiếm món ăn, dịch vụ, khuyến mãi";
   @Input()

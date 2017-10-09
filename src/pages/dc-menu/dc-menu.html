@@ -6,7 +6,11 @@
     <div class="dc-content">
         <div class="quick-menu" id="quick-menu">
             <div class="item" #items *ngFor="let category of showCategories; let i = index" id="quick-menu-item-{{category.id}}" [class.active]="category.id == selectedCategory.id" (click)="menuClick(category)">
-                <span class="icon" [style.color]="category.color" [style.background-color]="category.background" [innerHTML]="category.icon"> </span>
+                <!-- <span class="icon" [style.color]="category.color" [style.background-color]="category.background" [innerHTML]="category.icon"> </span> -->
+                <span class="icon">
+                    <img *ngIf="category.id != selectedCategory.id" src="assets/images/service/icon_categories_{{category.id}}_1.png" alt="">
+                    <img *ngIf="category.id == selectedCategory.id" src="assets/images/service/icon_categories_{{category.id}}_2.png" alt="">
+                </span>
                 <span class="title">{{category.titleVie}}</span>
             </div>
             <div style="flex-basis: 10px;min-width: 10px; min-height: 10px"></div>

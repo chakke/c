@@ -1,5 +1,5 @@
-<ion-header id="dc-ship-header">
-    <dc-header title="Dịch vụ" [showSearchBar]="false" [ionContent]="shipContent"></dc-header>
+<ion-header>
+    <dc-header title="Dịch vụ" [showSearchBar]="false" [showBackButton]="true" [ionContent]="shipContent"></dc-header>
 </ion-header>
 <div class="fixed-top" id="ship-fill-form-fixed-top">
     <div class="dc-step-group">
@@ -78,7 +78,7 @@
             </div>
             <div class="error-message">{{errorMessage}}</div>
             <div class="button-group">
-                <button ion-button type="button" class="dc-button-outline" (tap)="goBack()">Quay lại</button>
+                <button ion-button type="button" class="dc-button-outline" (tap)="getBack()">Quay lại</button>
                 <button ion-button class="dc-button">Tiếp tục</button>
             </div>
         </form>

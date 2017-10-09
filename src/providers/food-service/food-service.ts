@@ -7,10 +7,10 @@ import { Food, OrderedFood } from '../classes/food';
 export class FoodServiceProvider {
   allFoods: Array<Food> = [];
   orderedFood: Array<OrderedFood> = [];
+  shipFood: Array<OrderedFood> = [];
+
   dataVersion: number = 0;
   constructor(private http: HttpService) {
-    this.orderedFood = [
-    ]
   }
 
   updateData(version: number, data) {
@@ -72,6 +72,7 @@ export class FoodServiceProvider {
       return Observable.of(filteredFoods);
     }
   }
+
   getOrderFoodByCategory(category: number, keyword?: string, startIndex?: number, count?: number): Observable<Array<OrderedFood>> {
     let filteredFoods: Array<any> = this.allFoods.filter(elm => {
       return elm.category == category;
@@ -99,5 +100,13 @@ export class FoodServiceProvider {
 
   getPopularFoods(keyword?: string, startIndex?: number, count?: number): Observable<Array<Food>> {
     return this.getFoodByCategory(1, keyword, startIndex, count);
+  }
+
+  setShipFood(shipFoods: Array<OrderedFood>) {
+    this.shipFood = shipFoods;
+  }
+
+  getShipFood() {
+    return this.shipFood;
   }
 }

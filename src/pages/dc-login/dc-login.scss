@@ -18,10 +18,11 @@ page-dc-login {
             margin: 10px 0;
             .icon {
                 position: absolute;
-                left: 15%;
-                top: 0;
-                width: 1.5*$inputHeight;
-                height: $inputHeight;
+                left: 20%;
+                top: 50%;
+                width: 0.5*$inputHeight;
+                height: 0.5*$inputHeight;
+                transform: translateY(-50%);
                 line-height: $inputHeight;
                 color: map-get($DCColors, primary);
                 &.valid {
@@ -32,7 +33,7 @@ page-dc-login {
                 text-align: center;
                 border-radius: 20px;
                 border: solid 1px map-get($DCColors, gray);
-                color: map-get($DCColors, primary);
+                color: map-get($DCColors, gray);
                 height: $inputHeight;
                 font-size: 1em;
                 padding: .5em;
@@ -115,13 +116,13 @@ page-dc-login {
     }
     .ng-touched.ng-invalid:not(form) {
         .text-input {
-            border-color: map-get($DCColors, primary);
+            border-color: rgba(187, 43, 51, 0.6);
         }
     }
     .ng-touched.ng-valid:not(form) {
         .text-input {
-            border-color: map-get($DCColors, green);
-            color: map-get($DCColors, green);
+            border-color: map-get($DCColors, gray);
+            color: map-get($DCColors, gray);
         }
     }
     .validate-message {

@@ -1,132 +1,34 @@
 page-dc-service {
-    .scroll-content {
-        padding-top: 4.2rem;
+    .row,
+    .col {
+        padding: 0;
     }
-    .dc-content {
-        height: 100%;
-        max-height: 100%;
-        overflow: auto;
-    }
-    .segment-md .segment-button {
-        font-size: 1em;
-        font-weight: 500;
-        color: map-get($DCColors, black);
-        text-transform: none;
-        border-bottom-width: 1px;
-        &.segment-activated {
-            border-bottom-width: 2px;
-            color: map-get($DCColors, primary);
-            border-bottom-color: map-get($DCColors, primary);
-        }
-    }
-    .segment-content {
-        .place-div {
-            img {
-                display: block;
-                width: 50%;
-                margin: 7em auto 2em auto;
-            }
-            .button-group {
-                width: 100%;
-                text-align: center;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                span {
-                    color: map-get($DCColors, gray);
-                    margin-bottom: 15px;
-                }
-            }
-        }
-    }
-    .dc-step-group {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .fixed-top {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
-    .service-section {
-        .section-header {
-            width: 100%;
-            padding: 10px 0 10px map-get($DCSizes, defaultPadding);
+    .item {
+        padding: 10px map-get($DCSizes, defaultPadding);
+        border-bottom: solid 1px map-get($DCColors, lightgray);
+        .col-text {
             display: flex;
-            line-height: 1.2em;
-            background-color: #f7f0e8;
-            justify-content: space-between;
-            >div {
-                text-align: center;
-                word-break: break-all;
-            }
-            .icon {
-                font-size: 1.2em;
-                min-width: 1.2em;
-                color: map-get($DCColors, orange);
-            }
+            padding-left: 10px;
+            flex-direction: column;
+            justify-content: space-around;
+            justify-content: space-evenly;
             .title {
-                color: map-get($DCColors, orange);
-                font-weight: 500;
-                padding: 0 5px;
-                white-space: nowrap;
-                margin-right: auto;
-            }
-            .ordered {
-                font-style: italic;
+                font-size: map-get($DCSizes, big);
                 color: map-get($DCColors, black);
-                margin: auto;
+                font-weight: bold;
+                display: block;
             }
-            .button-right {
-                span {
-                    display: block;
-                    width: 1.2em;
-                    height: 1.2em;
-                    border-radius: 20px;
-                    font-size: 1.2em;
-                    color: map-get($DCColors, primary);
-                    border: solid 1px;
-                    text-align: center;
-                    line-height: 1em;
-                }
-                padding-right: map-get($DCSizes, paddingRight);
-            }
-            .price {
-                white-space: nowrap;
-                padding: 0 5px;
-                margin: 0 auto;
+            .des {
+                color: map-get($DCColors, gray);
             }
         }
-        .price {
-            color: map-get($DCColors, orange);
-            font-weight: 500;
-        }
-        .section-body {
-            .food-item {
-                .item-order {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
-                    align-items: center;
-                    padding-left: 5px;
-                    .order-button {
-                        display: block;
-                        width: 100%;
-                        text-align: center;
-                        box-sizing: border-box;
-                        height: 1.5em;
-                        line-height: 1em;
-                        padding: 0;
-                        height: 7vw;
-                        max-height: 40px;
-                    }
-                }
-                .price {
-                    font-size: 1.2em;
-                    display: block;
-                }
+        .col-img {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0 5px;
+            img {
+                width: 100%;
             }
         }
     }

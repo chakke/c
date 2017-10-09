@@ -6,11 +6,11 @@ page-dc-menu {
         border-bottom: solid 1px map-get($DCColors, lightgray);
         .item {
             &.active {
-                .icon {
-                    background-color: #FFF !important;
-                    color: map-get($DCColors, primary) !important;
-                    border: solid 2px map-get($DCColors, primary) !important;
-                }
+                // .icon {
+                //     background-color: #FFF !important;
+                //     color: map-get($DCColors, primary) !important;
+                //     border: solid 2px map-get($DCColors, primary) !important;
+                // }
                 color: map-get($DCColors, primary) !important;
             }
             min-width: 30%;
@@ -30,6 +30,10 @@ page-dc-menu {
                 justify-content: center;
                 align-items: center;
                 font-size: 2.5em;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
             }
             .title {
                 margin: 10px 0 5px 0;

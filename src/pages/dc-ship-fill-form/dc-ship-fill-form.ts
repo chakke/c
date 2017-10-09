@@ -96,7 +96,7 @@ export class DcShipFillFormPage {
       }
     }
     if (this.form.valid) {
-      console.log("go to next");
+      this.navCtrl.push("DcShipPaymentPage");
     } else {
       let required = false;
       for (var key in this.form.controls) {
@@ -119,12 +119,7 @@ export class DcShipFillFormPage {
     }
 
   }
-
-  goBack() {
-    console.log("go back");
-    this.navCtrl.pop();
-  }
-
+ 
   dateChange(event) {
     let day = event.day;
     let month = event.month;
@@ -141,6 +136,10 @@ export class DcShipFillFormPage {
     let month = date.getMonth() + 1;
     let day = date.getDate();
     return date.getFullYear() + "-" + (month > 9 ? month : "0" + month) + "-" + (day > 9 ? day : "0" + day)
+  }
+
+  getBack() {
+    this.navCtrl.pop();
   }
 
 }

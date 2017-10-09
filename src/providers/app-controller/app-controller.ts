@@ -13,31 +13,31 @@ export class AppControllerProvider {
   private toast: Toast;
   private menuItems = [
     {
-      icon: ' <i class="fa fa-home" aria-hidden="true"></i>',
+      icon: 'assets/images/main-icon/icon_home.png',
       title: 'Trang chủ',
       page: 'DcHomePage',
       active: true
     },
     {
-      icon: '<i class="fa fa-list-alt" aria-hidden="true"></i>',
+      icon: 'assets/images/main-icon/icon_menu.png',
       title: 'Thực đơn',
       page: 'DcMenuPage',
       active: false
     },
     {
-      icon: '<i class="fa fa-handshake-o" aria-hidden="true"></i>',
+      icon: 'assets/images/main-icon/icon_promotion.png',
       title: 'Chương trình khuyến mại',
       page: 'DcPromotionPage',
       active: false
     },
     {
-      icon: ' <i class="fa fa-bell-o" aria-hidden="true"></i>',
+      icon: 'assets/images/main-icon/icon_order.png',
       title: 'Đặt món',
       page: 'DcShipPage',
       active: false
     },
     {
-      icon: ' <i class="fa fa-object-group" aria-hidden="true"></i>',
+      icon: 'assets/images/main-icon/icon_support.png',
       title: 'Dich vụ',
       page: 'DcServicePage',
       active: false

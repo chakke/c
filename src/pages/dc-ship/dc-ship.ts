@@ -17,7 +17,7 @@ export class DcShipPage {
       number: 1,
       title: "Chọn món",
       active: true,
-      hasArrow: true, 
+      hasArrow: true,
       isDone: false
     },
     {
@@ -149,12 +149,13 @@ export class DcShipPage {
     this.orderedFoods = [];
   }
 
-  continueOrder(){
-    if(this.orderedFoods.length>0){
+  continueOrder() {
+    if (this.orderedFoods.length > 0) {
+      this.appController.getFoodService().setShipFood(this.orderedFoods);
       this.navCtrl.push("DcShipFillFormPage");
     }
   }
- 
+
   search() {
     this.createDefault();
     this.loadMorePopularFoods();

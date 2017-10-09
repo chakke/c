@@ -4,6 +4,10 @@ dc-header {
     .dc-header {
         color: map-get($DCColors, white);
         background-color: map-get($DCColors, primary);
+        background-image: url('/assets/images/main-icon/top_bar_3.png');
+        background-position: 0 0;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
         .header-title {
             width: 100%;
             height: $headerRowHeight;
@@ -28,6 +32,12 @@ dc-header {
                 top: 0;
                 ion-icon {
                     vertical-align: text-bottom;
+                }
+                .icon {
+                    width: 1.2em;
+                    height: 1.2em;
+                    display: inline-block;
+                    vertical-align: text-top;
                 }
                 &.button-left {
                     left: 0;
