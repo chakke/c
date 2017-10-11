@@ -61,14 +61,15 @@ dc-header {
                 }
             }
         }
-        .search-bar {
-            .searchbar {
-                background: none !important;
-                padding: 0 map-get($DCSizes, defaultPadding);
-                .searchbar-input {
-                    border-radius: 20px;
-                }
-            }
+    }
+}
+
+.search-bar {
+    .searchbar {
+        background: none !important;
+        padding: 0 map-get($DCSizes, defaultPadding);
+        .searchbar-input {
+            border-radius: 20px;
         }
     }
 }

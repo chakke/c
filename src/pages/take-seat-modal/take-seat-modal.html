@@ -1,37 +1,49 @@
 <ion-header>
-    <dc-header title="Dịch vụ" [showSearchBar]="false" [showBackButton]="true" [ionContent]="shipContent"></dc-header>
+    <dc-header title="Đặt chỗ" [showBackButton]="true" [showSearchBar]="false"></dc-header>
 </ion-header>
-<div class="fixed-top" id="ship-fill-form-fixed-top">
-    <div class="dc-step-group">
-        <div class="step" *ngFor="let step of steps" [class.done]="step.isDone" [class.active]="step.active" [class.has-arrow]="step.hasArrow">
-            <span class="step-number" [innerHTML]="step.isDone? checkedIcon : step.number"></span>
-            <span class="step-title">{{step.title}}</span>
-        </div>
-    </div>
-</div>
 
-<ion-content id="ship-fill-form-ion-content">
+<ion-content>
     <div class="dc-content">
+        <div class="dc-banner">
+            <img src="assets/images/service/image_booking_2.png" alt="">
+            <div class="des">
+                <span>
+                  Nhà hàng chỉ nhận đặt chỗ trước 1 ngày
+                </span>
+                <br>
+                <span>
+                Vui lòng đặt chỗ ít nhất 1 giờ trước khi đến để được phục vụ tốt nhất
+              </span>
+            </div>
+        </div>
         <form (ngSubmit)="continue()" [formGroup]="form">
             <div class="dc-form">
                 <ion-row>
-                    <ion-col col-6>
+                    <ion-col col-4>
                         <div class="input-div">
                             <span class="icon"> 
                               <i class="fa fa-calendar" aria-hidden="true"></i>
                           </span>
-                            <ion-input [(ngModel)]="date" formControlName="date" placeholder="Ngày giao hàng"></ion-input>
+                            <ion-input [(ngModel)]="date" formControlName="date" placeholder="Ngày "></ion-input>
                             <ion-datetime displayFormat="DD/MM/YYYY" [min]="currentDateString" [max]="maxDateString" (ionChange)="dateChange($event)"></ion-datetime>
                         </div>
                     </ion-col>
-                    <ion-col col-6>
+                    <ion-col col-4>
                         <div class="input-div">
                             <span class="icon">
                               <i class="fa fa-clock-o" aria-hidden="true"></i>
                           </span>
-                            <ion-input [(ngModel)]="time" formControlName="time" placeholder="Thời gian giao hàng"></ion-input>
+                            <ion-input [(ngModel)]="time" formControlName="time" placeholder="Giờ"></ion-input>
                             <ion-datetime displayFormat="HH:mm" (ionChange)="changeTime($event)"></ion-datetime>
 
+                        </div>
+                    </ion-col>
+                    <ion-col col-4>
+                        <div class="input-div">
+                            <span class="icon">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                          </span>
+                            <ion-input [(ngModel)]="person" type="tel" formControlName="person" placeholder="Số người"></ion-input>
                         </div>
                     </ion-col>
                 </ion-row>
@@ -59,16 +71,6 @@
                     <ion-col col-12>
                         <div class="input-div">
                             <span class="icon"> 
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        </span>
-                            <ion-input [(ngModel)]="address" formControlName="address" placeholder="Địa chỉ giao hàng"></ion-input>
-                        </div>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col col-12>
-                        <div class="input-div">
-                            <span class="icon"> 
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </span>
                             <ion-textarea [(ngModel)]="note" formControlName="note" placeholder="Yêu cầu khác"></ion-textarea>
@@ -78,8 +80,8 @@
             </div>
             <div class="error-message">{{errorMessage}}</div>
             <div class="button-group">
-                <button ion-button type="button" class="dc-button-outline" (tap)="getBack()">Quay lại</button>
-                <button ion-button class="dc-button">Tiếp tục</button>
+                <button ion-button type="button" class="dc-button-outline" (tap)="getBack()">Hủy</button>
+                <button ion-button class="dc-button">Gửi yêu cầu</button>
             </div>
         </form>
     </div>

@@ -4,6 +4,7 @@ import { HttpService } from '../http-service';
 import { CategoryServiceProvider } from '../category-service/category-service';
 import { FoodServiceProvider } from '../food-service/food-service';
 import { UserServiceProvider } from '../user-service/user-service';
+import { ServiceProvider } from '../service/service';
 import { AssetsUrl } from '../app-constant'
 
 import { Toast, ToastController, App } from 'ionic-angular';
@@ -48,6 +49,7 @@ export class AppControllerProvider {
     private foodService: FoodServiceProvider,
     private categoryService: CategoryServiceProvider,
     private userService: UserServiceProvider,
+    private service: ServiceProvider,
     private toastCtrl: ToastController,
     private app: App
   ) {
@@ -89,6 +91,10 @@ export class AppControllerProvider {
 
   getCategoryService(): CategoryServiceProvider {
     return this.categoryService;
+  }
+
+  getServiceProvider() {
+    return this.service;
   }
 
   showToast(message: string, duration?: number, position?: string) {

@@ -66,8 +66,7 @@ export class DcShipFillFormPage {
     let date = new Date();
     this.currentDateString = this.getDateString(date);
     date.setMonth(date.getMonth() + 1);
-    this.maxDateString = this.getDateString(date);
-    console.log(this.currentDateString + "..." + this.maxDateString);
+    this.maxDateString = this.getDateString(date); 
   }
 
   ionViewDidLoad() {

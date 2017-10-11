@@ -13,7 +13,7 @@
 <ion-content id="ship-payment-ion-content">
     <div class="dc-content" radio-group [(ngModel)]="method" (ionChange)="paymentMethodChange($event)">
         <form (ngSubmit)="continue()" [formGroup]="form">
-            <div class="form">
+            <div class="dc-form">
                 <div class="item">
                     <ion-radio item-left value="cash" class="radio-md" [class.radio-ios]="false"></ion-radio>
                     <span class="text">Thanh toán khi nhận hàng</span>

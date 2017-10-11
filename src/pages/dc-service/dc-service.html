@@ -3,7 +3,7 @@
 </ion-header>
 <ion-content>
     <div class="dc-content">
-        <div class="item" *ngFor="let item of serviceItems">
+        <div class="item" (click)="gotoService(item)" *ngFor="let item of serviceItems">
             <ion-row>
                 <ion-col col-3 class="col-img">
                     <img src="assets/images/service/{{item.icon}}" alt="">

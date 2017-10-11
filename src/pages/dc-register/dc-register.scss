@@ -7,42 +7,6 @@ page-dc-register {
             width: 50%;
         }
     }
-    .login-form {
-        text-align: center;
-        padding: 10px 0;
-        background-color: #f9f9f9;
-        .input-div {
-            padding: 0 15%;
-            position: relative;
-            $inputHeight: 2.5em;
-            margin: 10px 0;
-            .icon {
-                position: absolute;
-                left: 20%;
-                top: 50%;
-                width: 0.5*$inputHeight;
-                height: 0.5*$inputHeight;
-                transform: translateY(-50%);
-                line-height: $inputHeight;
-                color: map-get($DCColors, primary);
-                &.valid {
-                    color: map-get($DCColors, green);
-                }
-            }
-            .text-input {
-                text-align: center;
-                border-radius: 20px;
-                border: solid 1px map-get($DCColors, gray);
-                color: map-get($DCColors, primary);
-                height: $inputHeight;
-                font-size: 1em;
-                padding: .5em;
-                // padding-left: 1.5*$inputHeight;
-                width: 100%;
-                margin: 0;
-            }
-        }
-    }
     .login-button {
         width: 100%;
         text-align: center;
