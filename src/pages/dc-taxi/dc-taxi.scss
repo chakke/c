@@ -29,4 +29,8 @@ page-dc-taxi {
             height: auto !important;
         }
     }
+    .text-input {
+        height: 2.5em;
+        color: map-get($map: $DCColors, $key: gray) !important;
+    }
 }

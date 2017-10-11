@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AppControllerProvider } from '../../providers/app-controller/app-controller';
 
@@ -17,7 +17,8 @@ export class DcTaxiPage {
   isSubmited = false;
   errorMessage = "";
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private appCtrl: AppControllerProvider, private formBuilder: FormBuilder) {
+    private appCtrl: AppControllerProvider, private formBuilder: FormBuilder,
+    private modalCtrl: ModalController) {
     this.form = this.formBuilder.group(
       {
         address: [""],
@@ -59,4 +60,11 @@ export class DcTaxiPage {
       }
     }
   }
+
+  pickPlace(event) { 
+    this.navCtrl.push("DcFindPlacePage"); 
+    event.preventDefault();
+    event.stopPropagation()
+  }
+
 }

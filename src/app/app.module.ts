@@ -13,7 +13,8 @@ import { HttpModule } from '@angular/http';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { AppControllerProvider } from '../providers/app-controller/app-controller';
 import { CategoryServiceProvider } from '../providers/category-service/category-service';
-import { ServiceProvider } from '../providers/service/service'; 
+import { ServiceProvider } from '../providers/service/service';
+import { GoogleMaps, Geocoder } from '@ionic-native/google-maps';
 @NgModule({
   declarations: [
     MyApp,
@@ -38,7 +39,9 @@ import { ServiceProvider } from '../providers/service/service';
     UserServiceProvider,
     AppControllerProvider,
     CategoryServiceProvider,
-    ServiceProvider
+    ServiceProvider,
+    GoogleMaps,
+    Geocoder
   ]
 })
 export class AppModule { }

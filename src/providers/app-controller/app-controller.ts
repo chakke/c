@@ -110,4 +110,13 @@ export class AppControllerProvider {
   hideToast() {
     if (this.toast) this.toast.dismiss();
   }
+
+  setBackgroundForScrollContent(ionContentSelector: string, color: string) {
+    if (!ionContentSelector) ionContentSelector = ".has-map";
+    let elements = document.querySelectorAll(ionContentSelector + "> .scroll-content");
+    for (let i = 0; i < elements.length; i++) {
+      let element = <HTMLElement>elements.item(i);
+      element.style.setProperty("background-color", color, "important");
+    }
+  }
 }
