@@ -30,9 +30,7 @@ export class CategoryServiceProvider {
 
   broadcastChange(data) {
     if (this.dataChangeHandler) this.dataChangeHandler(data);
-  }
-
-
+  } 
 
   resetData() {
     this.categories = [];

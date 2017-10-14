@@ -38,6 +38,10 @@ page-dc-promotion {
                 max-height: 3* $lineHeight;
                 overflow: hidden;
                 width: 100%;
+                p {
+                    margin: 0;
+                    padding: 0;
+                }
             }
         }
         .col-img {

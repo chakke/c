@@ -1,18 +1,28 @@
 page-discount-detail {
-    .big-title {
-        width: 100%;
-        font-size: 2.5em;
-        font-weight: 500;
-        padding: 16px;
+    .dc-content {
+        padding: map-get($map: $DCSizes, $key: defaultPadding);
+    }
+    .discount-title {
+        font-size: map-get($map: $DCSizes, $key: big);
+        font-weight: bold;
         color: map-get($DCColors, black);
-        text-transform: uppercase;
-        text-align: center;
+    }
+    .discount-time {
+        padding-top: 5px;
+        .icon {
+            color: map-get($map: $DCColors, $key: primary);
+        }
+        .time {
+            color: map-get($map: $DCColors, $key: green);
+        }
     }
     .image {
-        padding: 0 16px;
+        width: 100%;
+        display: block;
+        margin-bottom: 15px;
     }
-    .content {
-        padding: 5px 16px 10px 16px;
+    .discount-content {
+        margin-top: 15px;
         color: map-get($DCColors, black);
     }
 }

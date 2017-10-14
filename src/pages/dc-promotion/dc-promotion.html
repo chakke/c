@@ -4,7 +4,7 @@
 
 <ion-content>
     <div class="dc-content">
-        <div class="dc-section section-promotion" *ngFor="let promotion of promotions; let i = index">
+        <div class="dc-section section-promotion" (click)="gotoDiscountDetail(promotion)" *ngFor="let promotion of promotions; let i = index">
             <ion-row>
                 <ion-col col-4 class="col-img">
                     <div class="image-container">
@@ -18,9 +18,8 @@
                         <img src="assets/images/promotion/icon_new.png" alt="new">
                       </span>
                     </span>
-                    <span class="time">{{promotion.time}}</span>
-                    <span class="des">
-                      {{promotion.description}}
+                    <span class="time">{{promotion.startTime.toLocaleDateString() +" - " + promotion.endTime.toLocaleDateString()}}</span>
+                    <span class="des" [innerHTML]="promotion.content"> 
                     </span>
                 </ion-col>
             </ion-row>

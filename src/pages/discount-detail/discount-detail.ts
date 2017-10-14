@@ -7,7 +7,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'discount-detail.html',
 })
 export class DiscountDetailPage {
-  discount = {};
+  discount;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     if (this.navParams.get("discount")) this.discount = this.navParams.get("discount"); 
     console.log(this.navParams.get("discount"));

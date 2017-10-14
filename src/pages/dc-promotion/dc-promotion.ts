@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { AppControllerProvider } from '../../providers/app-controller/app-controller';
+import { Discount } from '../../providers/classes/discount';
 @IonicPage()
 @Component({
   selector: 'page-dc-promotion',
@@ -8,23 +9,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DcPromotionPage {
   promotions = [
-
   ]
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    for (let i = 0; i < 20; i++) {
-      this.promotions.push({
-        image: "https://malaysiafreebies.com/wp-content/uploads/2017/09/22008088_1539645696116176_4713972264537885721_n.jpg",
-        title: "Tưng bừng đón tết trung thu",
-        isNew: true,
-        time: "2/10/2017 - 8/10/2017",
-        description: "Dancer kính gửi tới quý khách hàng chương trình khuyến mãi cực khủng. Mua 1 tặng 2 trả tiền 3. "
-
-      });
-    }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private appController: AppControllerProvider) {
+    
+  } 
+  loadAllPromotion() {
+    this.promotions = this.appController.getDiscountService().getAllDiscount();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DcPromotionPage');
+    this.loadAllPromotion(); 
+  }
+
+  gotoDiscountDetail(discount) {
+    this.navCtrl.push("DiscountDetailPage", { "discount": discount });
   }
 
 }

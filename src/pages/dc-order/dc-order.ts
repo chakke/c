@@ -12,7 +12,7 @@ export class DcOrderPage {
   totalPrice: number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams, private appController: AppControllerProvider) {
   }
-
+  
   ionViewDidLoad() {
     this.orderList = this.appController.getFoodService().getOrderedFoods();
     this.caculateTotalPrice();
@@ -59,4 +59,6 @@ export class DcOrderPage {
   gotoMenuPage() {
     this.appController.setRootPage("DcMenuPage");
   }
+
+  
 }
