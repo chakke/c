@@ -42,8 +42,7 @@
         "jquery": "^3.2.1",
         "rxjs": "5.4.0",
         "sw-toolbox": "3.6.0",
-        "zone.js": "0.8.12",
-        "com.googlemaps.ios": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"
+        "zone.js": "0.8.12"
     },
     "devDependencies": {
         "@ionic/app-scripts": "2.1.4",
@@ -57,7 +56,6 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
-<<<<<<< HEAD
             "com.googlemaps.ios": {},
             "cordova-plugin-googlemaps": {
                 "API_KEY_FOR_ANDROID": "AIzaSyDrQKIeX2hZ4dmykyWQLVGM9vBfg_y-FIM",
@@ -66,13 +64,6 @@
                 "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Trace your location on the map"
             },
             "cordova-plugin-ionic-webview": {}
-=======
-            "cordova-plugin-googlemaps": {
-                "API_KEY_FOR_ANDROID": "AIzaSyDrQKIeX2hZ4dmykyWQLVGM9vBfg_y-FIM",
-                "API_KEY_FOR_IOS": "AIzaSyBoaR4bZhwCNl_FtdqJpZxSSFpg7S9qU-Y"
-            },
-            "com.googlemaps.ios": {}
->>>>>>> 8711c1f709b16d2acd889e55f6130a07d1e3293c
         },
         "platforms": [
             "android",
