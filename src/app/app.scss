@@ -251,6 +251,7 @@ $headerRowHeight: 45px;
 
 .dc-footer {
     .button-group {
+        background-color: map-get($map: $DCColors, $key: white);
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;

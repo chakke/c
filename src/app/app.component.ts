@@ -9,6 +9,7 @@ import { User } from '../providers/classes/user';
 })
 export class MyApp {
   rootPage: any = 'DcHomePage';
+  // rootPage: any = 'DcFindPlacePage';
   user: User;
   menuItems = [
 
@@ -62,7 +63,9 @@ export class MyApp {
   }
   closeMenu(): Promise<any> {
     this.setMenuZIndex(0);
-    return this.menuCtrl.close();
+    return this.menuCtrl.close().then(() => {
+      this.appController.setBackgroundForScrollContent("","");
+    });
   }
 
   logOut() {

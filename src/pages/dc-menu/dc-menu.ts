@@ -5,7 +5,7 @@ import { Category } from '../../providers/classes/category';
 import { Food, OrderedFood } from '../../providers/classes/food';
 
 import { Observable, Subscription } from 'rxjs';
-import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/delay'; 
 @IonicPage()
 @Component({
   selector: 'page-dc-menu',
@@ -68,8 +68,11 @@ export class DcMenuPage {
   scrollToActiveItem = true;
 
   @ViewChildren('items') items: QueryList<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private appCotroller: AppControllerProvider) {
-    this.selectedCategory = new Category(0, "", "");
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private appCotroller: AppControllerProvider ) {
+    this.selectedCategory = new Category(0, "", ""); 
   }
 
   ionViewDidLoad() {

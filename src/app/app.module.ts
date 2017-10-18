@@ -13,7 +13,10 @@ import { HttpModule } from '@angular/http';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { AppControllerProvider } from '../providers/app-controller/app-controller';
 import { CategoryServiceProvider } from '../providers/category-service/category-service';
-import { ServiceProvider } from '../providers/service/service'; 
+import { ServiceProvider } from '../providers/service/service';
+import { GoogleMaps, Geocoder } from '@ionic-native/google-maps';
+import { AddressServiceProvider } from '../providers/address-service/address-service';
+import { DiscountServiceProvider } from '../providers/discount-service/discount-service'; 
 @NgModule({
   declarations: [
     MyApp,
@@ -22,7 +25,9 @@ import { ServiceProvider } from '../providers/service/service';
     BrowserModule,
     HttpModule,
     FormsModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      pageTransition: 'ios-transition'
+    }),
     ComponentsModule
   ],
   bootstrap: [IonicApp],
@@ -38,7 +43,11 @@ import { ServiceProvider } from '../providers/service/service';
     UserServiceProvider,
     AppControllerProvider,
     CategoryServiceProvider,
-    ServiceProvider
+    ServiceProvider,
+    GoogleMaps,
+    Geocoder,
+    AddressServiceProvider,
+    DiscountServiceProvider 
   ]
 })
 export class AppModule { }

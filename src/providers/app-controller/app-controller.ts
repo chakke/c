@@ -5,6 +5,8 @@ import { CategoryServiceProvider } from '../category-service/category-service';
 import { FoodServiceProvider } from '../food-service/food-service';
 import { UserServiceProvider } from '../user-service/user-service';
 import { ServiceProvider } from '../service/service';
+import { AddressServiceProvider } from '../address-service/address-service';
+import { DiscountServiceProvider } from '../discount-service/discount-service';
 import { AssetsUrl } from '../app-constant'
 
 import { Toast, ToastController, App } from 'ionic-angular';
@@ -31,12 +33,12 @@ export class AppControllerProvider {
       page: 'DcPromotionPage',
       active: false
     },
-    {
-      icon: 'assets/images/main-icon/icon_order.png',
-      title: 'Đặt món',
-      page: 'DcShipPage',
-      active: false
-    },
+    // {
+    //   icon: 'assets/images/main-icon/icon_order.png',
+    //   title: 'Đặt món',
+    //   page: 'DcOrderPage',
+    //   active: false
+    // },
     {
       icon: 'assets/images/main-icon/icon_support.png',
       title: 'Dich vụ',
@@ -49,7 +51,9 @@ export class AppControllerProvider {
     private foodService: FoodServiceProvider,
     private categoryService: CategoryServiceProvider,
     private userService: UserServiceProvider,
+    private addressService: AddressServiceProvider,
     private service: ServiceProvider,
+    private discountService: DiscountServiceProvider,
     private toastCtrl: ToastController,
     private app: App
   ) {
@@ -69,6 +73,16 @@ export class AppControllerProvider {
       }
     }
   }
+  pushPage(page: any, param?: any) {
+    if (page && page != "") {
+      this.app.getActiveNav().push(page, param);
+      for (let item of this.menuItems) {
+        item.active = false;
+        if (item.page == page) item.active = true;
+      }
+    }
+  }
+ 
 
   getDatas() {
     this.httpService.requestGet(AssetsUrl.DATA, "").then(data => {
@@ -97,6 +111,14 @@ export class AppControllerProvider {
     return this.service;
   }
 
+  getAddressService(){
+    return this.addressService;
+  }
+
+  getDiscountService(){
+    return this.discountService;
+  }
+
   showToast(message: string, duration?: number, position?: string) {
     this.hideToast();
     this.toast = this.toastCtrl.create({
@@ -109,5 +131,14 @@ export class AppControllerProvider {
 
   hideToast() {
     if (this.toast) this.toast.dismiss();
+  }
+
+  setBackgroundForScrollContent(ionContentSelector: string, color: string) {
+    if (!ionContentSelector) ionContentSelector = ".has-map";
+    let elements = document.querySelectorAll(ionContentSelector + "> .scroll-content");
+    for (let i = 0; i < elements.length; i++) {
+      let element = <HTMLElement>elements.item(i);
+      element.style.setProperty("background-color", color, "important");
+    }
   }
 }

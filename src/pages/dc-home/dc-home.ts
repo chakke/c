@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, InfiniteScroll, ModalController } 
 import { AppControllerProvider } from '../../providers/app-controller/app-controller'
 import { Food } from '../../providers/classes/food';
 import { Category } from '../../providers/classes/category';
+import { Discount } from '../../providers/classes/discount';
 import { Observable, Subscription } from 'rxjs';
 import 'rxjs/add/operator/delay';
 @IonicPage()
@@ -12,16 +13,7 @@ import 'rxjs/add/operator/delay';
 })
 
 export class DcHomePage {
-  discounts = [
-    {
-      image: "https://s3-ap-southeast-1.amazonaws.com/mytour-static-file/files/cityme%20625x400.png",
-      title: "Ăn sang giá sàn 10% off"
-    },
-    {
-      image: "https://cdn02.static-adayroi.com/resize/710_710/100/0/2016/09/20/1474361257955_5545841.jpg",
-      title: "Cơn lốc vịt quay Bắc Kinh ngay tại Hà Nội"
-    }
-  ];
+  discounts: Array<Discount> = [];
   categories: Array<Category> = [];
   showCategories: Array<Category> = [];
   categoryPerPage: number = 4;
@@ -35,10 +27,10 @@ export class DcHomePage {
     public navParams: NavParams,
     private appController: AppControllerProvider,
     private modalCtrl: ModalController) {
-
   }
   ionViewDidLoad() {
     this.loadCategories();
+    this.getAllDiscount();
     this.appController.getCategoryService().onDataChange((data) => {
       this.createDefault();
       if (data) this.categories = data;
@@ -107,9 +99,12 @@ export class DcHomePage {
     this.categoryIndex = this.categories.length;
   }
 
+  getAllDiscount(){
+    this.discounts = this.appController.getDiscountService().getAllDiscount();
+  }
+
   gotoDiscountDetail(discount) {
-    let modal = this.modalCtrl.create("DiscountDetailPage", { "discount": discount });
-    modal.present();
+    this.navCtrl.push("DiscountDetailPage", { "discount": discount });
   }
 
   gotoDetail(food) {

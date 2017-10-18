@@ -63,4 +63,8 @@ export class DcHeaderComponent {
       this.ionContent.scrollToTop(300);
     }
   }
+
+  openMenu() {
+    this.appController.setBackgroundForScrollContent("", "#FFF");
+  }
 }

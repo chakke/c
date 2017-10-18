@@ -15,11 +15,12 @@
             <div class="dc-form">
                 <ion-row>
                     <ion-col col-12>
-                        <div class="input-div">
+                        <div class="input-div" (click)="pickPlace($event)">
                             <span class="icon">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                             </span>
-                            <ion-input [(ngModel)]="address" type="text" formControlName="address" placeholder="Điểm đến"></ion-input>
+                            <!-- <ion-input [(ngModel)]="address" type="text" formControlName="address" placeholder="Điểm đến"></ion-input> -->
+                            <span class="text-input" [ngClass]="{'dc-gray': !currentAddress, 'dc-balack': currentAddress}">{{getTarget(currentAddress)}}</span>
                         </div>
                     </ion-col>
                 </ion-row>
@@ -45,8 +46,7 @@
             </div>
             <div class="error-message">{{errorMessage}}</div>
             <div class="button-group">
-
-                <button ion-button class="dc-button">Gọi trợ giúp</button>
+                <button ion-button class="dc-button">Gọi taxi</button>
             </div>
         </form>
     </div>
