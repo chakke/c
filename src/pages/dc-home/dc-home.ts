@@ -35,7 +35,7 @@ export class DcHomePage {
     public navParams: NavParams,
     private appController: AppControllerProvider,
     private modalCtrl: ModalController) {
-    console.log("HomePage constructor");
+
   }
   ionViewDidLoad() {
     this.loadCategories();
@@ -75,7 +75,7 @@ export class DcHomePage {
     this.onLoadMore = true;
     let categoryCount = this.categoryIndex + this.categoryPerPage;
     this.observer = Observable.interval(this.categoryDebounceTime).subscribe(() => {
-      console.log("adding category", this.categoryIndex, Date.now());
+      // console.log("adding category", this.categoryIndex, Date.now());
       if (this.categoryIndex == this.categories.length || this.categoryIndex == categoryCount) {
         if (infiniteScroll)
           infiniteScroll.complete();
@@ -89,6 +89,7 @@ export class DcHomePage {
     });
 
   }
+
 
   getFoodByCategory(category) {
     let foodObserver = this.appController.getFoodService().getFoodByCategory(category.id, this.keyword, 0, 6);

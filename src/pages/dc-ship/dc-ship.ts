@@ -66,8 +66,9 @@ export class DcShipPage {
   ionViewDidLoad() {
     this.loadMorePopularFoods();
   }
-
+  mViewEnterTime: number = 0;
   ionViewDidEnter() {
+    if (this.mViewEnterTime != 0) return;
     let fixedTop = <HTMLElement>document.getElementById('ship-fixed-top');
     let content = <HTMLElement>document.querySelector('#ship-ion-content .scroll-content');
     let searchBar = <HTMLElement>document.getElementById('dc-ship-search-bar');
@@ -76,7 +77,10 @@ export class DcShipPage {
       content.style.paddingTop = fixedTop.offsetHeight - searchBar.offsetHeight + "px";
       searchBarHeight.style.height = searchBar.offsetHeight + "px";
     }
+
     this.loadCategories();
+    this.mViewEnterTime++;
+
   }
 
   loadCategories() {
