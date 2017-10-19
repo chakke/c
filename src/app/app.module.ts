@@ -6,17 +6,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { ComponentsModule } from '../components/components.module';
-import { FoodServiceProvider } from '../providers/food-service/food-service';
+import { ComponentsModule } from '../components/bistro/components.module';
+import { FoodServiceProvider } from '../providers/bistro/food-service/food-service';
 import { HttpService } from '../providers/http-service';
 import { HttpModule } from '@angular/http';
-import { UserServiceProvider } from '../providers/user-service/user-service';
-import { AppControllerProvider } from '../providers/app-controller/app-controller';
-import { CategoryServiceProvider } from '../providers/category-service/category-service';
-import { ServiceProvider } from '../providers/service/service';
+import { UserServiceProvider } from '../providers/bistro/user-service/user-service';
+import { AppControllerProvider } from '../providers/bistro/app-controller/app-controller';
+import { CategoryServiceProvider } from '../providers/bistro/category-service/category-service';
+import { ServiceProvider } from '../providers/bistro/service/service';
 import { GoogleMaps, Geocoder } from '@ionic-native/google-maps';
-import { AddressServiceProvider } from '../providers/address-service/address-service';
-import { DiscountServiceProvider } from '../providers/discount-service/discount-service'; 
+import { AddressServiceProvider } from '../providers/bistro/address-service/address-service';
+import { DiscountServiceProvider } from '../providers/bistro/discount-service/discount-service'; 
 @NgModule({
   declarations: [
     MyApp,

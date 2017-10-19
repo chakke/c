@@ -1,0 +1,45 @@
+page-dc-loading {
+    .preload-image {
+        opacity: 0;
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    ion-content {
+        background: map-get($map: $DCColors, $key: primary) !important;
+    }
+    @keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -70%, 0);
+        display: inline-block;
+        box-sizing: border-box;
+        width: 25%;
+        height: 140px;
+    }
+    .line {
+        position: absolute;
+        top: 50%;
+        margin-left: 10px;
+        width: 60px;
+        height: 4px;
+        background: #FFF;
+        animation: spin 1.5s infinite ease;
+        &:nth-of-type(2) {
+            animation-delay: 0.1s;
+        }
+        &:nth-of-type(3) {
+            animation-delay: 0.2s;
+        }
+        &:nth-of-type(4) {
+            animation-delay: 0.3s;
+        }
+    }
+}

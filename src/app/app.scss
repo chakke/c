@@ -13,13 +13,14 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 $headerRowHeight: 45px;
-.show-page {
+.dc-header {
     font-size: .8em;
     color: map-get($DCColors, black);
 }
 
-.show-page .show-page {
-    font-size: 1em;
+.dc-content {
+    font-size: .8em;
+    color: map-get($DCColors, black);
 }
 
 [nowrap] {
@@ -250,6 +251,7 @@ $headerRowHeight: 45px;
 }
 
 .dc-footer {
+    font-size: .8em;
     .button-group {
         background-color: map-get($map: $DCColors, $key: white);
         display: -webkit-box;
@@ -276,6 +278,7 @@ $headerRowHeight: 45px;
 }
 
 .fixed-top {
+    font-size: .8em;
     background-image: url('/assets/images/main-icon/top_bar_3.png');
     background-position: 0px -1 * $headerRowHeight;
     background-size: 100% auto;
@@ -552,7 +555,7 @@ $headerRowHeight: 45px;
 }
 
 .dc-fab {
-    $fabHeight: 3em;
+    $fabHeight: 2.6em;
     width: $fabHeight;
     height: $fabHeight;
     bottom: 0.5 * $fabHeight;

@@ -1,27 +1,29 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Menu, App } from 'ionic-angular';
+import { Platform, MenuController, Menu, App, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AppControllerProvider } from '../providers/app-controller/app-controller';
-import { User } from '../providers/classes/user';
+import { AppControllerProvider } from '../providers/bistro/app-controller/app-controller';
+import { User } from '../providers/bistro/classes/user';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = 'DcHomePage';
-  // rootPage: any = 'DcFindPlacePage';
+  // rootPage: any = 'DcHomePage';
+  rootPage: any = 'DcLoadingPage';
   user: User;
   menuItems = [
 
   ]
   @ViewChild(Menu) menu: Menu;
+
   constructor(
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     private menuCtrl: MenuController,
     private app: App,
-    private appController: AppControllerProvider
+    private appController: AppControllerProvider,
+    public event: Events
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -32,7 +34,7 @@ export class MyApp {
   }
   ngAfterViewInit() {
     this.menu.ionOpen.subscribe(event => {
-      this.setMenuZIndex(1);
+      // this.setMenuZIndex(1);
     })
 
     this.menu.onBackdropClick = () => {
@@ -61,7 +63,8 @@ export class MyApp {
   closeMenu(): Promise<any> {
     this.setMenuZIndex(0);
     return this.menuCtrl.close().then(() => {
-      this.appController.setBackgroundForScrollContent("","");
+      this.appController.setBackgroundForScrollContent("", "");
+      this.event.publish('close-menu');
     });
   }
 
