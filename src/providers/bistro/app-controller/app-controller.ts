@@ -8,19 +8,22 @@ import { UserServiceProvider } from '../user-service/user-service';
 import { ServiceProvider } from '../service/service';
 import { AddressServiceProvider } from '../address-service/address-service';
 import { DiscountServiceProvider } from '../discount-service/discount-service';
-import { AssetsUrl } from '../app-constant'
+import { AssetsUrl } from '../app-constant';
+import { ResourceLoader } from '../../resource-loader/resource-loader';
 
 import { Toast, ToastController, App } from 'ionic-angular';
 
 @Injectable()
 export class AppControllerProvider {
   private toast: Toast;
+  private resourceLoader: ResourceLoader;
+
   private menuItems = [
     {
       icon: 'assets/bistro/images/main-icon/icon_home.png',
       title: 'Trang chủ',
       page: 'DcHomePage',
-      active: true
+      active: false
     },
     {
       icon: 'assets/bistro/images/main-icon/icon_menu.png',
@@ -59,27 +62,31 @@ export class AppControllerProvider {
     private app: App
   ) {
     this.getDatas();
+    this.resourceLoader = new ResourceLoader();
   }
 
   getMenuItems() {
     return this.menuItems;
   }
 
-  setRootPage(page: any, param?: any) {
-
+  setRootPage(page: any, param?: any) { 
     if (page && page != "" && page) {
       let activeIndex = this.menuItems.findIndex(elm => {
         return elm.active;
       })
-      if (activeIndex > -1 && this.menuItems[activeIndex].page == page) {
-        return;
-      } else {
-        this.menuItems[activeIndex].active = false;
-        this.app.getActiveNav().setRoot(page, param);
-        for (let item of this.menuItems) {
-          if (item.page == page) item.active = true;
+      console.log("active index ", activeIndex)
+      if (activeIndex > -1) {
+        if (this.menuItems[activeIndex].page == page) {
+          return;
+        } else {
+          this.menuItems[activeIndex].active = false;          
         }
       }
+      this.app.getActiveNav().setRoot(page, param);
+      for (let item of this.menuItems) {
+        if (item.page == page) item.active = true;
+      }
+
     }
   }
   pushPage(page: any, param?: any) {
@@ -91,7 +98,6 @@ export class AppControllerProvider {
       }
     }
   }
-
 
   getDatas() {
     this.httpService.requestGet(AssetsUrl.DATA, "").then(data => {
@@ -126,6 +132,10 @@ export class AppControllerProvider {
 
   getDiscountService() {
     return this.discountService;
+  }
+
+  getResourceLoader() {
+    return this.resourceLoader;
   }
 
   showToast(message: string, duration?: number, position?: string) {
@@ -238,5 +248,14 @@ export class AppControllerProvider {
       return true;
     };
     return false;
+  }
+
+  cloneSimpleObject(objectSource: any,objectTarget: any){
+    for (var key in objectSource) {
+      if (objectSource.hasOwnProperty(key)) {
+        var element = objectSource[key];
+        objectTarget[key] = element;        
+      }
+    }
   }
 }

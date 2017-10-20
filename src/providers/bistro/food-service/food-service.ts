@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import { HttpService } from '../../http-service';
 import { Observable } from 'rxjs';
 import { Food, OrderedFood } from '../classes/food';
+import { Category } from '../classes/category';
 @Injectable()
 export class FoodServiceProvider {
   allFoods: Array<Food> = [];
@@ -56,14 +57,14 @@ export class FoodServiceProvider {
     this.orderedFood = [];
   }
 
-  getFoodByCategory(category: number, keyword?: string, startIndex?: number, count?: number): Observable<Array<Food>> {
+  getFoodByCategory(category: Category, keyword?: string, startIndex?: number, count?: number): Observable<Array<Food>> {
     let filteredFoods = this.allFoods.filter(elm => {
-      return elm.category == category;
+      return elm.category == category.id;
     });
     if (keyword) {
       keyword = keyword.toLowerCase();
       filteredFoods = filteredFoods.filter(food => {
-        return food.keyWord.includes(keyword);
+        return food.keyWord.includes(keyword) || category.keyword.includes(keyword);
       });
     }
     if (!isNaN(startIndex) && !isNaN(count)) {
@@ -99,7 +100,7 @@ export class FoodServiceProvider {
   }
 
   getPopularFoods(keyword?: string, startIndex?: number, count?: number): Observable<Array<Food>> {
-    return this.getFoodByCategory(1, keyword, startIndex, count);
+    return this.getFoodByCategory(new Category(1,"",""), keyword, startIndex, count);
   }
 
   setShipFood(shipFoods: Array<OrderedFood>) {

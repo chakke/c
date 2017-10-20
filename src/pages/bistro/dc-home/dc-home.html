@@ -2,6 +2,11 @@
     <dc-header (onSearch)="search($event)" [ionContent]="content"> </dc-header>
 </ion-header>
 <ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <div class="dc-loading">
+            <div class="circle"></div>
+        </div>
+    </ion-refresher>
     <div class="dc-content">
         <div class="slide">
             <ion-slides pager="true" autoplay="3000">
@@ -11,7 +16,7 @@
 
             </ion-slides>
         </div>
-        <div [hidden]="!category.numberOfItems" class="dc-section" *ngFor="let category of showCategories">
+        <div [hidden]="!category.numberOfItems" #itemCategory class="dc-section" *ngFor="let category of showCategories">
             <div class="section-header">
                 <span class="title">{{category.titleVie}}</span>
                 <span class="button-right round" (click)="goToMenu(category)">Xem tất cả </span>

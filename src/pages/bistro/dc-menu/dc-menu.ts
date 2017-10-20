@@ -210,7 +210,7 @@ export class DcMenuPage {
 
   loadMoreFoods(infiniteScroll?) {
     this.onLoadMore = true;
-    this.appController.getFoodService().getFoodByCategory(this.selectedCategory.id, this.keyword,
+    this.appController.getFoodService().getFoodByCategory(this.selectedCategory, this.keyword,
       this.currentIndex, this.numberOfFoodPerScreen).subscribe(data => {
 
         if (data) {

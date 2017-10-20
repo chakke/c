@@ -4,6 +4,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { File } from '@ionic-native/file';
 
 import { MyApp } from './app.component';
 import { ComponentsModule } from '../components/bistro/components.module';
@@ -47,7 +48,8 @@ import { DiscountServiceProvider } from '../providers/bistro/discount-service/di
     GoogleMaps,
     Geocoder,
     AddressServiceProvider,
-    DiscountServiceProvider 
+    DiscountServiceProvider,
+    File
   ]
 })
 export class AppModule { }

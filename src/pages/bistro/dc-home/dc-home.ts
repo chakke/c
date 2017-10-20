@@ -1,9 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { IonicPage, NavController, NavParams, InfiniteScroll, ModalController, Content } from 'ionic-angular';
 import { AppControllerProvider } from '../../../providers/bistro/app-controller/app-controller'
 import { Food } from '../../../providers/bistro/classes/food';
 import { Category } from '../../../providers/bistro/classes/category';
-import { Discount } from '../../../providers/bistro/classes/discount'; 
+import { Discount } from '../../../providers/bistro/classes/discount';
 
 @IonicPage()
 @Component({
@@ -17,9 +17,11 @@ export class DcHomePage {
   categoryPerPage: number = 4;
   categoryIndex: number = 0;
   categoryDebounceTime = 300;
-  onLoadMore = false; 
+  onLoadMore = false;
   keyword: string = "";
+  isEntered = false;
 
+  @ViewChildren('itemCategory') itemCategories: QueryList<any>; 
   @ViewChild(Content) content: Content;
   constructor(
     public navCtrl: NavController,
@@ -27,7 +29,12 @@ export class DcHomePage {
     private appController: AppControllerProvider,
     private modalCtrl: ModalController) {
   }
-  ionViewDidLoad() {
+  ionViewDidLoad() { 
+    this.itemCategories.changes.subscribe(event => { 
+      this.animateSectionElement();
+    }) 
+
+    this.createDefault();
     this.loadCategories();
     this.getAllDiscount();
     this.appController.getCategoryService().onDataChange((data) => {
@@ -38,41 +45,45 @@ export class DcHomePage {
   }
 
   ionViewDidEnter() {
-    this.animateSectionElement();
-    this.content.ionScrollEnd.subscribe(() => {
+    if (!this.isEntered) { 
       this.animateSectionElement();
-    })
-    // this.content.getNativeElement().addEventListener('touchend',()=>{
-    //   this.animateSectionElement();
-    // })
-
+      this.content.ionScrollEnd.subscribe(() => {
+        this.animateSectionElement();
+      })
+    } 
+    this.isEntered = true;
   }
 
-  animateSectionElement() {
+  animateSectionElement() { 
     let viewPortWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
     let sections = document.getElementsByClassName('dc-section');
     for (let i = 0; i < sections.length; i++) {
       let section = <HTMLElement>sections.item(i);
-      if (!section.classList.contains("animated") && this.appController.isElementInViewPort(section, viewPortWidth, viewPortHeight, 1, true, true)) {
-        section.classList.add("animated", "fadeInRight");
+      if (this.appController.isElementInViewPort(section, viewPortWidth, viewPortHeight, 1, true, true)) {
+        if (!section.classList.contains("animated")) {
+          section.classList.add("animated", "fadeInRight");
 
-        section.addEventListener('animationend', () => {
+          section.addEventListener('animationend', () => {
+            this.animateItemElement(section, viewPortWidth, viewPortHeight);
+          })
+          section.addEventListener('oAnimationEnd', () => {
+            this.animateItemElement(section, viewPortWidth, viewPortHeight);
+          })
+          section.addEventListener('webkitAnimationEnd', () => {
+            this.animateItemElement(section, viewPortWidth, viewPortHeight);
+          })
+        }
+        else {
           this.animateItemElement(section, viewPortWidth, viewPortHeight);
-        })
-        section.addEventListener('oAnimationEnd', () => {
-          this.animateItemElement(section, viewPortWidth, viewPortHeight);
-        })
-        section.addEventListener('webkitAnimationEnd', () => {
-          this.animateItemElement(section, viewPortWidth, viewPortHeight);
-        })
-
+        }
       }
     }
   }
 
   animateItemElement(section: HTMLElement, viewPortWidth: number, viewPortHeight: number) {
+
     section.style.animationDuration = "0ms";
     let scrollContens = section.getElementsByClassName('horizontal-scroll');
     if (scrollContens.length > 0) {
@@ -117,11 +128,10 @@ export class DcHomePage {
     this.categoryIndex = 0;
     this.categoryDebounceTime = 300;
     this.onLoadMore = false;
-    this.keyword = ""; 
+    this.keyword = "";
   }
 
   loadCategories() {
-    this.createDefault();
     this.categories = this.appController.getCategoryService().getAllCategories();
     this.loadMoreCategory();
   }
@@ -139,7 +149,10 @@ export class DcHomePage {
     let categoryCount = this.categoryIndex + this.categoryPerPage;
 
     for (this.categoryIndex; this.categoryIndex < this.categories.length && this.categoryIndex < categoryCount; this.categoryIndex++) {
-      this.showCategories.push(this.categories[this.categoryIndex]);
+      let category = new Category(0, "", "");
+      this.appController.cloneSimpleObject(this.categories[this.categoryIndex], category);
+      this.showCategories.push(category);
+      // this.showCategories.push(this.categories[this.categoryIndex]);
     }
     if (infiniteScroll)
       infiniteScroll.complete();
@@ -147,7 +160,7 @@ export class DcHomePage {
   }
 
   getFoodByCategory(category) {
-    let foodObserver = this.appController.getFoodService().getFoodByCategory(category.id, this.keyword, 0, 6);
+    let foodObserver = this.appController.getFoodService().getFoodByCategory(category, this.keyword, 0, 6);
     foodObserver.subscribe(data => {
       category["numberOfItems"] = data.length;
     });
@@ -160,6 +173,7 @@ export class DcHomePage {
     this.keyword = keyword;
     this.showCategories = this.categories;
     this.categoryIndex = this.categories.length;
+    // this.animateSectionElement()
   }
 
   getAllDiscount() {
@@ -176,6 +190,15 @@ export class DcHomePage {
 
   goToMenu(category) {
     this.appController.setRootPage("DcMenuPage", { category: category });
+  }
+
+  doRefresh(refresher) {
+    this.createDefault();
+    this.loadCategories();
+    setTimeout(() => {
+      this.animateSectionElement();
+      refresher.complete();
+    }, 1000);
   }
 
 }

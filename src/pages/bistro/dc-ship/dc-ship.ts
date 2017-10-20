@@ -84,7 +84,7 @@ export class DcShipPage {
   }
 
   getFoodByCategory(category) {
-    let foodObserver = this.appController.getFoodService().getFoodByCategory(category.id, this.keyword);
+    let foodObserver = this.appController.getFoodService().getFoodByCategory(category, this.keyword);
     foodObserver.subscribe(data => {
       category["numberOfItems"] = data.length;
     });

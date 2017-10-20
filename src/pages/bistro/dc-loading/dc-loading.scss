@@ -1,33 +1,35 @@
 page-dc-loading {
-    .preload-image {
-        opacity: 0;
-        z-index: -1;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
     ion-content {
         background: map-get($map: $DCColors, $key: primary) !important;
+        // background: #691514 !important;
     }
     @keyframes spin {
         100% {
             transform: rotate(360deg);
         }
     }
-    .container {
+    .img-loading {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 50%;
+        left: 0;
+        transform: translateX(-50%);
+    }
+    .dc-loading {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate3d(-50%, -70%, 0);
         display: inline-block;
         box-sizing: border-box;
-        width: 25%;
-        height: 140px;
+        width: 100px;
+        height: 110px;
     }
     .line {
         position: absolute;
-        top: 50%;
-        margin-left: 10px;
+        top: 40px;
+        left: 20px;
         width: 60px;
         height: 4px;
         background: #FFF;
@@ -41,5 +43,15 @@ page-dc-loading {
         &:nth-of-type(4) {
             animation-delay: 0.3s;
         }
+    }
+    .loading-text {
+        position: absolute;
+        bottom: 0;
+        color: #FFF;
+        display: block;
+        width: 100%;
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
