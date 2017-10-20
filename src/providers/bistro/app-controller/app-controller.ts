@@ -10,6 +10,7 @@ import { AddressServiceProvider } from '../address-service/address-service';
 import { DiscountServiceProvider } from '../discount-service/discount-service';
 import { AssetsUrl } from '../app-constant';
 import { ResourceLoader } from '../../resource-loader/resource-loader';
+import { Config } from '../classes/config';
 
 import { Toast, ToastController, App } from 'ionic-angular';
 
@@ -17,7 +18,8 @@ import { Toast, ToastController, App } from 'ionic-angular';
 export class AppControllerProvider {
   private toast: Toast;
   private resourceLoader: ResourceLoader;
-
+  private config: Config;
+  private menuItemChangeHandler: any;
   private menuItems = [
     {
       icon: 'assets/bistro/images/main-icon/icon_home.png',
@@ -63,13 +65,24 @@ export class AppControllerProvider {
   ) {
     this.getDatas();
     this.resourceLoader = new ResourceLoader();
+    this.config = new Config();
+    this.loadConfig().then(() => {
+      this.menuItems = this.config.getData(["app-config", "menu-item"]);
+      if (this.menuItemChangeHandler) {
+        this.menuItemChangeHandler(this.menuItems);
+      } 
+    });
   }
 
   getMenuItems() {
     return this.menuItems;
   }
 
-  setRootPage(page: any, param?: any) { 
+  onMenuItemChange(handler) {
+    this.menuItemChangeHandler = handler;
+  }
+
+  setRootPage(page: any, param?: any) {
     if (page && page != "" && page) {
       let activeIndex = this.menuItems.findIndex(elm => {
         return elm.active;
@@ -79,7 +92,7 @@ export class AppControllerProvider {
         if (this.menuItems[activeIndex].page == page) {
           return;
         } else {
-          this.menuItems[activeIndex].active = false;          
+          this.menuItems[activeIndex].active = false;
         }
       }
       this.app.getActiveNav().setRoot(page, param);
@@ -109,6 +122,24 @@ export class AppControllerProvider {
       }
     })
   };
+
+  loadConfig() {
+    return new Promise((resolve, reject) => {
+      if (this.config.hasData()) {
+        resolve();
+      } else {
+        this.httpService.getHttp().request(AssetsUrl.CONFIG).subscribe(
+          data => {
+            this.config.onResponseConfig(data.json());
+            resolve();
+          }
+        );
+      }
+    });
+  }
+  getAppConfig() {
+    return this.config;
+  }
 
   getFoodService(): FoodServiceProvider {
     return this.foodService;
@@ -250,11 +281,11 @@ export class AppControllerProvider {
     return false;
   }
 
-  cloneSimpleObject(objectSource: any,objectTarget: any){
+  cloneSimpleObject(objectSource: any, objectTarget: any) {
     for (var key in objectSource) {
       if (objectSource.hasOwnProperty(key)) {
         var element = objectSource[key];
-        objectTarget[key] = element;        
+        objectTarget[key] = element;
       }
     }
   }

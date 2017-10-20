@@ -25,6 +25,9 @@ export class MyApp {
     private appController: AppControllerProvider,
     public event: Events
   ) {
+    this.appController.onMenuItemChange((menuItems) => { 
+      this.menuItems = menuItems;
+    })
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -41,8 +44,10 @@ export class MyApp {
       this.closeMenu();
     }
     this.user = this.appController.getUserService().getUser();
-    this.menuItems = this.appController.getMenuItems();
+    this.menuItems = this.appController.getMenuItems(); 
   }
+ 
+
   itemClick(menuItem) {
     this.appController.setRootPage(menuItem.page);
     this.closeMenu();

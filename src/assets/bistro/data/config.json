@@ -1,0 +1,30 @@
+{
+    "version": "1.0",
+    "app-config": {
+        "menu-item": [{
+                "icon": "assets/bistro/images/main-icon/icon_home.png",
+                "title": "Trang chủ",
+                "page": "DcHomePage",
+                "active": false
+            },
+            {
+                "icon": "assets/bistro/images/main-icon/icon_menu.png",
+                "title": "Thực đơn",
+                "page": "DcMenuPage",
+                "active": false
+            },
+            {
+                "icon": "assets/bistro/images/main-icon/icon_promotion.png",
+                "title": "Chương trình khuyến mại",
+                "page": "DcPromotionPage",
+                "active": false
+            },
+            {
+                "icon": "assets/bistro/images/main-icon/icon_support.png",
+                "title": "Dich vụ",
+                "page": "DcServicePage",
+                "active": false
+            }
+        ]
+    }
+}
