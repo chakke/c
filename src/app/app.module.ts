@@ -17,7 +17,8 @@ import { CategoryServiceProvider } from '../providers/bistro/category-service/ca
 import { ServiceProvider } from '../providers/bistro/service/service';
 import { GoogleMaps, Geocoder } from '@ionic-native/google-maps';
 import { AddressServiceProvider } from '../providers/bistro/address-service/address-service';
-import { DiscountServiceProvider } from '../providers/bistro/discount-service/discount-service'; 
+import { DiscountServiceProvider } from '../providers/bistro/discount-service/discount-service';
+import { BistroHttpServiceProvider } from '../providers/bistro/bistro-http-service/bistro-http-service';
 @NgModule({
   declarations: [
     MyApp,
@@ -26,7 +27,7 @@ import { DiscountServiceProvider } from '../providers/bistro/discount-service/di
     BrowserModule,
     HttpModule,
     FormsModule,
-    IonicModule.forRoot(MyApp,{
+    IonicModule.forRoot(MyApp, {
       pageTransition: 'ios-transition'
     }),
     ComponentsModule
@@ -49,7 +50,8 @@ import { DiscountServiceProvider } from '../providers/bistro/discount-service/di
     Geocoder,
     AddressServiceProvider,
     DiscountServiceProvider,
-    File
+    File,
+    BistroHttpServiceProvider
   ]
 })
 export class AppModule { }

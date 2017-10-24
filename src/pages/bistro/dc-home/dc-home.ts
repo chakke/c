@@ -21,7 +21,7 @@ export class DcHomePage {
   keyword: string = "";
   isEntered = false;
 
-  @ViewChildren('itemCategory') itemCategories: QueryList<any>; 
+  @ViewChildren('itemCategory') itemCategories: QueryList<any>;
   @ViewChild(Content) content: Content;
   constructor(
     public navCtrl: NavController,
@@ -29,10 +29,10 @@ export class DcHomePage {
     private appController: AppControllerProvider,
     private modalCtrl: ModalController) {
   }
-  ionViewDidLoad() { 
-    this.itemCategories.changes.subscribe(event => { 
+  ionViewDidLoad() {
+    this.itemCategories.changes.subscribe(event => {
       this.animateSectionElement();
-    }) 
+    })
 
     this.createDefault();
     this.loadCategories();
@@ -42,19 +42,23 @@ export class DcHomePage {
       if (data) this.categories = data;
       this.loadMoreCategory();
     });
+    this.testRequest();
   }
-
+  testRequest() {
+    console.log("start test request");
+    this.appController.testRequest();
+  }
   ionViewDidEnter() {
-    if (!this.isEntered) { 
+    if (!this.isEntered) {
       this.animateSectionElement();
       this.content.ionScrollEnd.subscribe(() => {
         this.animateSectionElement();
       })
-    } 
+    }
     this.isEntered = true;
   }
 
-  animateSectionElement() { 
+  animateSectionElement() {
     let viewPortWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     let viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
@@ -76,15 +80,14 @@ export class DcHomePage {
           })
         }
         else {
-          this.animateItemElement(section, viewPortWidth, viewPortHeight);
+          this.animateItemElement(section, viewPortWidth, viewPortHeight, true);
         }
       }
     }
   }
 
-  animateItemElement(section: HTMLElement, viewPortWidth: number, viewPortHeight: number) {
-
-    section.style.animationDuration = "0ms";
+  animateItemElement(section: HTMLElement, viewPortWidth: number, viewPortHeight: number, noResetAnimationDuration?: boolean) {
+    if (!noResetAnimationDuration) { section.style.animationDuration = "0ms"; }
     let scrollContens = section.getElementsByClassName('horizontal-scroll');
     if (scrollContens.length > 0) {
       let scrollContent = <HTMLElement>scrollContens.item(0);

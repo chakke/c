@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Content } from 'ionic-angular';
 import 'rxjs/add/operator/map';
-import { HttpService } from '../../http-service';
+import { BistroHttpServiceProvider } from '../bistro-http-service/bistro-http-service'
 import { CategoryServiceProvider } from '../category-service/category-service';
 import { FoodServiceProvider } from '../food-service/food-service';
 import { UserServiceProvider } from '../user-service/user-service';
@@ -53,7 +53,7 @@ export class AppControllerProvider {
     },
   ]
   constructor(
-    private httpService: HttpService,
+    private httpService: BistroHttpServiceProvider,
     private foodService: FoodServiceProvider,
     private categoryService: CategoryServiceProvider,
     private userService: UserServiceProvider,
@@ -70,7 +70,7 @@ export class AppControllerProvider {
       this.menuItems = this.config.getData(["app-config", "menu-item"]);
       if (this.menuItemChangeHandler) {
         this.menuItemChangeHandler(this.menuItems);
-      } 
+      }
     });
   }
 
@@ -128,9 +128,9 @@ export class AppControllerProvider {
       if (this.config.hasData()) {
         resolve();
       } else {
-        this.httpService.getHttp().request(AssetsUrl.CONFIG).subscribe(
+        this.httpService.requestGet(AssetsUrl.CONFIG, "").then(
           data => {
-            this.config.onResponseConfig(data.json());
+            this.config.onResponseConfig(data);
             resolve();
           }
         );
@@ -274,7 +274,8 @@ export class AppControllerProvider {
         let delay = 0;
         if (!direction || direction == 1) delay += rect.top;
         if (!direction || direction == 2) delay += rect.left;
-        element.style.animationDelay = delay + "ms";
+        if (delay > 0)
+          element.style.animationDelay = delay + "ms";
       }
       return true;
     };
@@ -288,5 +289,95 @@ export class AppControllerProvider {
         objectTarget[key] = element;
       }
     }
+  }
+
+  getHttpService() {
+    return this.httpService;
+  }
+
+  testRequest() {
+    this.httpService.getProvince().then(data => {
+      console.log("getProvince success", data);
+    }, error => {
+      console.log("getProvince error", error);
+    })
+
+    this.httpService.postCustomerRegister("duan", "nguyen", "xuanduannguyen@gmail.com", "", "123456").then(data => {
+      console.log("postCustomerRegister success", data);
+    }, error => {
+      console.log("postCustomerRegister error", error);
+    })
+
+    this.httpService.postCustomerLoginByAccount("xuanduannguyen@gmail.com", "123456").then(data => {
+      console.log("postCustomerLoginByAccount success", data);
+    }, error => {
+      console.log("postCustomerLoginByAccount error", error);
+    })
+
+    this.httpService.postCustomerLoginByOpenId("facebook", "xuanduannguyen@gmail.com", "duan", "nguyen").then(data => {
+      console.log("postCustomerLoginByOpenId success", data);
+    }, error => {
+      console.log("postCustomerLoginByOpenId error", error);
+    })
+    this.httpService.postUserLogin("duannx", "123456").then(data => {
+      console.log("postUserLogin success", data);
+    }, error => {
+      console.log("postUserLogin error", error);
+    })
+    this.httpService.getStaffList(1, 1).then(data => {
+      console.log("getStaffList success", data);
+    }, error => {
+      console.log("getStaffList error", error);
+    })
+
+    this.httpService.getRestaurantByVendor(1).then(data => {
+      console.log("getRestaurantByVendor success", data);
+    }, error => {
+      console.log("getRestaurantByVendor error", error);
+    }).catch(xx => {
+      console.log("hey. fuck that", xx);
+    })
+    this.httpService.getRestaurantByLocation(21.0020267, 105.8466438, 150).then(data => {
+      console.log("getRestaurantByLocation success", data);
+    }, error => {
+      console.log("getRestaurantByLocation error", error);
+    })
+
+    this.httpService.getRestaurantByAccesspoint("123456789").then(data => {
+      console.log("getRestaurantByAccesspoint success", data);
+    }, error => {
+      console.log("getRestaurantByAccesspoint error", error);
+    })
+    this.httpService.getRestaurantDetail(1).then(data => {
+      console.log("getRestaurantDetail success", data);
+    }, error => {
+      console.log("getRestaurantDetail error", error);
+    })
+    this.httpService.getMenuCategory(1).then(data => {
+      console.log("getMenuCategory success", data);
+    }, error => {
+      console.log("getMenuCategory error", error);
+    })
+    this.httpService.getMenuList(1, 1, 1, "").then(data => {
+      console.log("getMenuList success", data);
+    }, error => {
+      console.log("getMenuList error", error);
+    })
+    this.httpService.getCouponList(1).then(data => {
+      console.log("getCouponList success", data);
+    }, error => {
+      console.log("getCouponList error", error);
+    })
+    this.httpService.getVendorList(1, "").then(data => {
+      console.log("getVendorList success", data);
+    }, error => {
+      console.log("getVendorList error", error);
+    })
+    this.httpService.getVendorDetail(1).then(data => {
+      console.log("getVendorDetail success", data);
+    }, error => {
+      console.log("getVendorDetail error", error);
+    })
+
   }
 }
