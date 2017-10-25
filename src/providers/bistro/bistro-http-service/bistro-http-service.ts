@@ -14,7 +14,7 @@ export class BistroHttpServiceProvider {
 
   requestGet(url: string, param: string) {
     return this.httpService.requestGet(url, param).catch(error => {
-      console.log("Error in http request " + url, error.status);
+      console.log("Error in http request GET " + url, error.status);
       if (error.status == 0) {
         if (!this.toast) {
           this.toast = this.toastCtrl.create({
@@ -33,7 +33,23 @@ export class BistroHttpServiceProvider {
   }
 
   requestPost(url: string, param: string) {
-    return this.httpService.requestPost(url, param);
+    return this.httpService.requestPost(url, param).catch(error => {
+      console.log("Error in http request POST " + url, error.status);
+      if (error.status == 0) {
+        if (!this.toast) {
+          this.toast = this.toastCtrl.create({
+            message: "No internet connection!", 
+            position: "top"
+          })
+          this.toast.present();
+          setTimeout(() => {
+            if (this.toast)
+              this.toast.dismiss();
+            this.toast = null;
+          }, 2000)
+        }
+      }
+    });;
   }
 
   //Lấy danh sách các tỉnh trong cả nước

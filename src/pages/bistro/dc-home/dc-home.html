@@ -1,7 +1,7 @@
 <ion-header>
     <dc-header (onSearch)="search($event)" [ionContent]="content"> </dc-header>
 </ion-header>
-<ion-content>
+<ion-content id="dc-home-content">
     <ion-refresher (ionRefresh)="doRefresh($event)">
         <div class="dc-loading">
             <div class="circle"></div>
